@@ -3,6 +3,14 @@ const app = require("./app");
 const dotenv = require("dotenv");
 const connectDatabase = require("./config/database");
 
+
+// Handling Uncaught Exception -- Defined at the top because it can then handle all the errors (errors like if some variable isn't defined for instance)
+process.on("uncaughtException", (err) => {
+  console.log(`Error: ${err.message}`);
+  console.log(`Shutting down the server due to Uncaught Exception`);
+  process.exit(1);
+});
+
 // Config
 
 dotenv.config({path:"backend/config/config.env"});
