@@ -11,6 +11,16 @@ dotenv.config({path:"backend/config/config.env"});
 
 connectDatabase();
 
-app.listen(process.env.PORT, () => {
+const server = app.listen(process.env.PORT, () => {
   console.log(`Server is listening on http://localhost:${process.env.PORT}`)
 })
+
+// Unhandled Promise Rejection
+process.on("unhandledRejection", (err) => {      // 'unhandledRejection' is the event name
+  console.log(`Error: ${err.message}`);
+  console.log(`Shutting down the server due to Unhandled Promise Rejection`);
+
+  server.close(() => {
+    process.exit(1);
+  });
+});
