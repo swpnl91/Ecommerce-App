@@ -45,6 +45,18 @@ class ApiFeatures {
 
     return this;
   }
+
+  pagination(resultPerPage) {
+
+    // 'Number() is used to convert a string to number'
+    const currentPage = Number(this.queryStr.page) || 1;   // 'this.queryStr.page' basically gets us the value for 'page' property in url. If not set already it's set as 1 by default
+    // 'skip' is used to figure out how many products to skip from the list while displaying
+    const skip = resultPerPage * (currentPage - 1);
+
+    this.query = this.query.limit(resultPerPage).skip(skip);   // basically handles the mongodb query 
+
+    return this;
+  }
 }
 
 module.exports = ApiFeatures;
