@@ -1,5 +1,6 @@
 const mongoose = require("mongoose");
 const validator = require("validator");
+const bcrypt = require("bcryptjs");
 
 
 const userSchema = new mongoose.Schema({
@@ -42,6 +43,17 @@ const userSchema = new mongoose.Schema({
 
   resetPasswordToken: String,
   resetPasswordExpire: Date,
+});
+
+// This is done BEFORE ('pre' keyword) every edit. "save" is an event
+userSchema.pre("save", async function (next) {    // arrow function isn't used because 'this' is used.
+  
+  // This condition ensures that the password is hashed/encrypted ONLY IF password is what's edited/changed by the user and not other things like 'avatar', 'name' etc.
+  if (!this.isModified("password")) {
+    next();
+  }
+
+  this.password = await bcrypt.hash(this.password, 10);  // '10' represents the power. Higher the number more secured the password
 });
 
 
