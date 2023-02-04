@@ -65,4 +65,6 @@ userSchema.methods.getJWTToken = function () {    // creating a .getJWTToken met
 };
 
 
+
+
 module.exports = mongoose.model("User", userSchema);
