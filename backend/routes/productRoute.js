@@ -11,7 +11,7 @@ router.route("/products").get(getAllProducts);
 router.route("/products/new").post(isAuthenticatedUser, authorizeRoles("admin"), createProduct);
 
 // Route for updating & deleting & getting details for a product
-router.route("/product/:id").put(isAuthenticatedUser, updateProduct).delete(isAuthenticatedUser, deleteProduct).get(getProductDetails);
+router.route("/product/:id").put(isAuthenticatedUser, authorizeRoles("admin"),updateProduct).delete(isAuthenticatedUser, authorizeRoles("admin"), deleteProduct).get(getProductDetails);
 
 
 
