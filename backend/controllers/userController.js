@@ -199,7 +199,7 @@ exports.getAllUsers = catchAsyncErrors(async (req, res, next) => {
   });
 });
 
-// Get details of a single User (as an Admin)
+// Getting details of a single User (as an Admin)
 exports.getSingleUser = catchAsyncErrors(async (req, res, next) => {
   const user = await User.findById(req.params.id);
 
@@ -212,5 +212,24 @@ exports.getSingleUser = catchAsyncErrors(async (req, res, next) => {
   res.status(200).json({
     success: true,
     user,
+  });
+});
+
+// Updating User Roles (as an Admin)
+exports.updateUserRole = catchAsyncErrors(async (req, res, next) => {
+  const newUserData = {
+    name: req.body.name,
+    email: req.body.email,
+    role: req.body.role,
+  };
+
+  await User.findByIdAndUpdate(req.params.id, newUserData, {
+    new: true,
+    runValidators: true,
+    useFindAndModify: false,
+  });
+
+  res.status(200).json({
+    success: true,
   });
 });
