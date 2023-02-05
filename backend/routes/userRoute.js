@@ -24,7 +24,8 @@ router.route("/admin/users").get(isAuthenticatedUser, authorizeRoles("admin"), g
 
 router
   .route("/admin/user/:id")
-  .get(isAuthenticatedUser, authorizeRoles("admin"), getSingleUser);
+  .get(isAuthenticatedUser, authorizeRoles("admin"), getSingleUser)
+  .put(isAuthenticatedUser, authorizeRoles("admin"), updateUserRole);
 
 
 module.exports = router;
