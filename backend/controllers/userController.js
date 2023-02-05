@@ -138,7 +138,7 @@ exports.resetPassword = catchAsyncErrors(async (req, res, next) => {
   sendToken(user, 200, res);    // To make the user log in
 });
 
-// Get User Detail
+// Getting User Details
 exports.getUserDetails = catchAsyncErrors(async (req, res, next) => {
   const user = await User.findById(req.user.id);   // Since only those users who're logged in are allowed to get their details we're bound to find that user and hence there's no condition that handles 'if no user found'
 
@@ -146,4 +146,25 @@ exports.getUserDetails = catchAsyncErrors(async (req, res, next) => {
     success: true,
     user,
   });
+});
+
+// Changing User password
+exports.updatePassword = catchAsyncErrors(async (req, res, next) => {
+  const user = await User.findById(req.user.id).select("+password");    // changes the 'select' field to 'true' which is 'false' by default. We do this as we need the password field too here.
+
+  const isPasswordMatched = await user.comparePassword(req.body.oldPassword);
+
+  if (!isPasswordMatched) {
+    return next(new ErrorHander("Old password is incorrect", 400));
+  }
+
+  if (req.body.newPassword !== req.body.confirmPassword) {
+    return next(new ErrorHander("passwords do not match", 400));
+  }
+
+  user.password = req.body.newPassword;
+
+  await user.save();
+
+  sendToken(user, 200, res);
 });
