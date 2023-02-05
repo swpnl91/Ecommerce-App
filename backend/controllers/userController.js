@@ -137,3 +137,13 @@ exports.resetPassword = catchAsyncErrors(async (req, res, next) => {
 
   sendToken(user, 200, res);    // To make the user log in
 });
+
+// Get User Detail
+exports.getUserDetails = catchAsyncErrors(async (req, res, next) => {
+  const user = await User.findById(req.user.id);   // Since only those users who're logged in are allowed to get their details we're bound to find that user and hence there's no condition that handles 'if no user found'
+
+  res.status(200).json({
+    success: true,
+    user,
+  });
+});
