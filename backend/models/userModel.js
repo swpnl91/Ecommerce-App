@@ -47,6 +47,9 @@ const userSchema = new mongoose.Schema({
   resetPasswordExpire: Date,
 });
 
+
+// userSchema methods
+
 // This is done BEFORE ('pre' keyword) every edit. "save" is an event
 userSchema.pre("save", async function (next) {    // arrow function isn't used because 'this' is used.
   

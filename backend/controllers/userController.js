@@ -3,6 +3,7 @@ const catchAsyncErrors = require("../middleware/catchAsyncErrors");
 const User = require("../models/userModel");
 const sendToken = require("../utils/jwtToken");
 const sendEmail = require("../utils/sendEmail");
+const crypto = require("crypto");
 
 // Registering a User
 exports.registerUser = catchAsyncErrors(async (req, res, next) => {
@@ -100,4 +101,39 @@ exports.forgotPassword = catchAsyncErrors(async (req, res, next) => {
 
     return next(new ErrorHander(error.message, 500));
   }
+});
+
+// Resetting the Password
+exports.resetPassword = catchAsyncErrors(async (req, res, next) => {
+  // creating token hash as we need to find the user with the same token but we've stored the token in a hashed form
+  const resetPasswordToken = crypto
+    .createHash("sha256")
+    .update(req.params.token)     // request.params.token comes from the url that's been sent via email and which the user follows to reset the password
+    .digest("hex");
+
+  const user = await User.findOne({
+    resetPasswordToken,     // since the property and its value have same variable names you can just write it the way it has been written
+    resetPasswordExpire: { $gt: Date.now() },     // basically checks whether the expired time is '$gt - greater than' 'now' and only returns those users
+  });
+
+  if (!user) {
+    return next(
+      new ErrorHander(
+        "Reset Password Token is invalid or has expired",
+        400
+      )
+    );
+  }
+
+  if (req.body.password !== req.body.confirmPassword) {
+    return next(new ErrorHander("Password does not password", 400));
+  }
+
+  user.password = req.body.password;
+  user.resetPasswordToken = undefined;
+  user.resetPasswordExpire = undefined;
+
+  await user.save();
+
+  sendToken(user, 200, res);    // To make the user log in
 });
