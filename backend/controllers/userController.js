@@ -233,3 +233,23 @@ exports.updateUserRole = catchAsyncErrors(async (req, res, next) => {
     success: true,
   });
 });
+
+// Deleting a User (as an Admin)
+exports.deleteUser = catchAsyncErrors(async (req, res, next) => {
+  const user = await User.findById(req.params.id);
+
+  if (!user) {
+    return next(
+      new ErrorHander(`User does not exist with Id: ${req.params.id}`, 400)
+    );
+  }
+
+  // Avatar will be taken care of later
+
+  await user.remove();
+
+  res.status(200).json({
+    success: true,
+    message: "User Deleted Successfully",
+  });
+});
