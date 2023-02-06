@@ -19,4 +19,9 @@ router.route("/product/:id").get(getProductDetails);
 // Route for creating/updating product reviews
 router.route("/review").put(isAuthenticatedUser, createProductReview);
 
+// Route for getting all product reviews/deleting a product review
+router
+  .route("/reviews")
+  .get(getProductReviews);
+  
 module.exports = router;
