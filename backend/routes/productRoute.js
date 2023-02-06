@@ -22,6 +22,6 @@ router.route("/review").put(isAuthenticatedUser, createProductReview);
 // Route for getting all product reviews/deleting a product review
 router
   .route("/reviews")
-  .get(getProductReviews);
-  
+  .get(getProductReviews)
+  .delete(isAuthenticatedUser, deleteReview);
 module.exports = router;
