@@ -49,3 +49,13 @@ exports.getSingleOrder = catchAsyncErrors(async (req, res, next) => {
     order,
   });
 });
+
+// Getting Orders for a logged in user
+exports.myOrders = catchAsyncErrors(async (req, res, next) => {
+  const orders = await Order.find({ user: req.user._id });     // basically it finds all the orders where the 'user' field (in 'orders' db) has the same id as that of the logged in user  
+
+  res.status(200).json({
+    success: true,
+    orders,
+  });
+});
