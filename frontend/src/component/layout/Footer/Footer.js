@@ -17,10 +17,10 @@ const Footer = () => {
       </div>
 
       <div className="midFooter">
-        <h1>1-stopShop</h1>
+        <h1>OneStopShop</h1>
         <p>Your wish is our command!</p>
 
-        <p>&copy; 2023; JhumriTalaiya, Inc. All Rights Reserved.</p>
+        <p>&copy; 2022-2023, JhumriTalaiya, Inc. All Rights Reserved.</p>
       </div>
 
       <div className="rightFooter">
