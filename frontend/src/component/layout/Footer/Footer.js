@@ -13,6 +13,13 @@ const Footer = () => {
         <img src={playStore} alt="playstore" />
         <img src={appStore} alt="Appstore" />
       </div>
+
+      <div className="midFooter">
+        <h1>1-stopShop</h1>
+        <p>Your wish is our command!</p>
+
+        <p>&copy; 2023; JhumriTalaiya, Inc. All Rights Reserved.</p>
+      </div>
     </footer>
   );
 };
