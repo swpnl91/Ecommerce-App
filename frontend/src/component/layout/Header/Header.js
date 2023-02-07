@@ -1,6 +1,6 @@
 import React from "react";
 import { ReactNavbar } from "overlay-navbar";      // Takes care of the hamburger menu and acts as an overlay-navbar
-import logo from "../../images/logo.png";
+import logo from "../../../images/logo.png";
 
 const options = {      // creating 'options' so that we can use it with 'ReactNavbar' as shown below for styling the overlay-navbar
   burgerColorHover: "#eb4034",
