@@ -2,7 +2,7 @@ import {
   ALL_PRODUCT_FAIL,
   ALL_PRODUCT_REQUEST,
   ALL_PRODUCT_SUCCESS,
-  
+  CLEAR_ERRORS
 } from "../constants/productConstants";
 
 
@@ -27,6 +27,11 @@ export const productReducer = (state = {}, action) => {
           loading: false,
           error: action.payload
           
+        };
+      case CLEAR_ERRORS:
+        return {
+           ...state,
+          error: null,
         };
       default:
         return state;
