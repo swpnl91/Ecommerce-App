@@ -13,7 +13,7 @@ const Product = ({ product }) => {
     edit: false,     // makes the stars uneditable
     color: "rgba(20, 20, 20, 0.1)",
     activeColor: "tomato",    // basically the number of stars that are given to a particular product are shown in active colors
-    size: window.innerWidth < 600 ? 20 : 25,       // added a condition for the size to take care of responsiveness
+    size: window.innerWidth < 600 ? 5 : 10,       // added a condition for the size to take care of responsiveness
     value: 2.5,     // The avg number of stars given to a product
     isHalf: true    // whether to show a colored half star or not
   };
