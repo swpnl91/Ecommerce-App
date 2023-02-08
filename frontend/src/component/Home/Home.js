@@ -7,7 +7,7 @@ const Home = () => {
   
   const product = {
     name: "blue shirt",
-    images: [{ url: "https://www.google.com/aclk?sa=l&ai=DChcSEwjnxY3YoYT9AhWZ6-MHHbK5BykYABAKGgJ5bQ&ase=2&sig=AOD64_2CKxXvlFuewxTS9zxhm7cgi0II9Q&ctype=5&q=&ved=2ahUKEwih5oPYoYT9AhVekIkEHafcDv4Q9aACKAB6BAgHEBg&adurl=" }],
+    images: [{ url: "https://i.ibb.co/DRST11n/1.webp" }],
     price: "$200",
     _id: "1234"
   };
