@@ -6,7 +6,7 @@ const options = {      // creating 'options' so that we can use it with 'ReactNa
   burgerColorHover: "#eb4034",
   logo,
   logoWidth: "20vmax",
-  navColor1: "rgba(0, 0, 0, 0.4)",
+  navColor1: "white",
   logoHoverSize: "10px",
   logoHoverColor: "#F4AF33", //"#eb4034",
   link1Text: "Home",
