@@ -1,8 +1,10 @@
-import React, { Fragment } from "react";
-import { CgMouse } from "react-icons/cg";
+import React, { Fragment, useEffect } from "react";
+import { CgMouse } from "react-icons/cg";      // we need to use ".../cg" instead of ".../all" in new versions of react-icons
 import "./Home.css";
 import Product from "./Product.js";
 import MetaData from "../layout/MetaData";
+import { clearErrors, getProduct } from "../../actions/productAction";
+import { useSelector, useDispatch } from "react-redux";
 
 const Home = () => {
   
@@ -12,6 +14,14 @@ const Home = () => {
     price: "$200",
     _id: "1234"
   };
+
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    
+    dispatch(getProduct());
+    
+  }, [dispatch]);
 
   return (
     <Fragment>

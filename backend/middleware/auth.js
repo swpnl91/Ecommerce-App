@@ -1,5 +1,5 @@
 // File for handling the authentication logic i.e giving access to only those users who're logged in
-const ErrorHander = require("../utils/errorhander");
+const ErrorHander = require("../utils/errorhandler");
 const catchAsyncErrors = require("./catchAsyncErrors");
 const jwt = require("jsonwebtoken");
 const User = require("../models/userModel");
