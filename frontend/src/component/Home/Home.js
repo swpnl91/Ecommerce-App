@@ -8,19 +8,20 @@ import { useSelector, useDispatch } from "react-redux";
 
 const Home = () => {
   
-  const product = {
-    name: "blue shirt",
-    images: [{ url: "https://i.ibb.co/DRST11n/1.webp" }],
-    price: "$200",
-    _id: "1234"
-  };
+  // const product = {
+  //   name: "blue shirt",
+  //   images: [{ url: "https://i.ibb.co/DRST11n/1.webp" }],
+  //   price: "$200",
+  //   _id: "1234"
+  // };
 
   const dispatch = useDispatch();
+  const { loading, error, products, productsCount } = useSelector((state) => state.products);
 
   useEffect(() => {
     
     dispatch(getProduct());
-    
+
   }, [dispatch]);
 
   return (
@@ -41,14 +42,10 @@ const Home = () => {
           <h2 className="homeHeading">Featured Products</h2>
 
           <div className="container" id="container">
-            <Product product={product} />
-            <Product product={product} />
-            <Product product={product} />
-            <Product product={product} />
-            <Product product={product} />
-            <Product product={product} />
-            <Product product={product} />
-            <Product product={product} />
+            {products &&
+              products.map((product) => (
+                <Product key={product._id} product={product} />
+            ))}
           </div>
 
     </Fragment>
