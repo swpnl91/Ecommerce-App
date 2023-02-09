@@ -163,6 +163,7 @@
   margin: auto;
   margin-bottom: 4vmax;
 }
+
 .reviews {
   display: flex;
   overflow: auto;
@@ -170,7 +171,6 @@
 
 .reviewCard {
   flex: none;
-
   box-shadow: 0 0 5px rgba(0, 0, 0, 0.226);
   border: 1px solid rgba(56, 56, 56, 0.116);
   width: 30vmax;
@@ -180,13 +180,16 @@
   margin: 1vmax;
   padding: 3vmax;
 }
+
 .reviewCard > img {
   width: 5vmax;
 }
+
 .reviewCard > p {
   color: rgba(0, 0, 0, 0.836);
   font: 600 0.9vmax "Roboto";
 }
+
 .reviewCardComment {
   color: rgba(0, 0, 0, 0.445);
   font: 300 0.8vmax cursive;
@@ -237,6 +240,7 @@
   .detailsBlock-3-1-1 {
     padding: 2vmax 0;
   }
+
   .detailsBlock-3-1-1 > button {
     padding: 1.2vmax;
     width: 4vmax;
@@ -279,6 +283,7 @@
   .reviewCard > p {
     font: 600 3vw "Roboto";
   }
+  
   .reviewCardComment {
     font: 300 5vw cursive;
   }
