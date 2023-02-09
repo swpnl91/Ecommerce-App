@@ -21,7 +21,7 @@ function App() {
     <Router>
       <Header />
       
-      <Route exact path="/" component={Home} />
+      <Route exact path="/" component={Home} />  
 
       <Footer />
     </Router>

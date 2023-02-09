@@ -18,8 +18,15 @@ exports.createProduct = catchAsyncErrors (async (req, res, next) => {
 });  
 
 // Get all products
-exports.getAllProducts = catchAsyncErrors (async (req, res) => {
-  
+exports.getAllProducts = catchAsyncErrors (async (req, res, next) => {
+
+  // const allProducts = await Product.find();
+
+  // // Takes care if products not found 
+  // if (2 === 2) {
+  //   return next(new ErrorHandler("Products Not Found", 500));
+  // }
+
   const resultPerPage = 8;
   const productsCount = await Product.countDocuments();
 

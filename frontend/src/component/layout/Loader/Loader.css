@@ -8,9 +8,12 @@
 }
 
 .loading > div {
-  width: 10vmax;
-  height: 10vmax;
-  border-bottom: 5px solid rgba(0, 0, 0, 0.719);
+  width: 5vmax;
+  height: 5vmax;
+  border-bottom: 5px solid #eb4034;
+  border-left: 5px solid #eb4034;
+  border-right: 5px solid #F4AF33;
+  border-top: 5px solid #F4AF33;
 
   border-radius: 50%;
 

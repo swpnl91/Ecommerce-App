@@ -5,30 +5,30 @@ import Product from "./Product.js";
 import MetaData from "../layout/MetaData";
 import { clearErrors, getProduct } from "../../actions/productAction";
 import { useSelector, useDispatch } from "react-redux";
+import Loader from "../layout/Loader/Loader";
+import { useAlert } from "react-alert";
 
 const Home = () => {
-  
-  // const product = {
-  //   name: "blue shirt",
-  //   images: [{ url: "https://i.ibb.co/DRST11n/1.webp" }],
-  //   price: "$200",
-  //   _id: "1234"
-  // };
-
+  const alert = useAlert();
   const dispatch = useDispatch();
-  const { loading, error, products, productsCount } = useSelector((state) => state.products);
+  const { loading, error, products } = useSelector((state) => state.products);
 
   useEffect(() => {
     
+    if (error) {
+      alert.error(error);
+      dispatch(clearErrors());
+    }
+
     dispatch(getProduct());
 
-  }, [dispatch]);
+  }, [dispatch, error, alert]);
 
   return (
     <Fragment>
 
       {loading ? (
-        "loading"
+        <Loader/>
       ) : (
         <Fragment>
           <MetaData title="E-store" />
