@@ -38,7 +38,7 @@ const Home = () => {
             <h1>SCROLL THROUGH THE AMAZING PRODUCTS BELOW</h1>
 
             <a href="#container">
-              <button>
+              <button> 
                 Scroll <CgMouse />
               </button>
             </a>
