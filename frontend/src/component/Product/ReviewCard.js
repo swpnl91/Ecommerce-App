@@ -1,4 +1,5 @@
 import { Rating } from "@material-ui/lab";
+import "./ProductDetails.css";
 import React from "react";
 import profilePng from "../../images/Profile.png";
 
