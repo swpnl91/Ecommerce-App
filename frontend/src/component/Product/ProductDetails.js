@@ -17,6 +17,14 @@ const ProductDetails = ({ match }) => {     /* match is received as a prop (defa
   );
 
 
+  const options = {
+    size: "large",
+    value: product.ratings,
+    readOnly: true,
+    precision: 0.5,
+  };
+
+
   useEffect(() => {
     if (error) {
       alert.error(error);
@@ -43,6 +51,48 @@ const ProductDetails = ({ match }) => {     /* match is received as a prop (defa
             ))}
           </Carousel>
         </div>
+
+        <div className="detailsBlock-1">
+          <h2>{product.name}</h2>
+          <p>Product # {product._id}</p>
+        </div>
+
+        <div className="detailsBlock-2">
+           {/* <Rating {...options} /> */}
+          <span className="detailsBlock-2-span">
+            {" "}
+            ({product.numOfReviews} Reviews)
+          </span>
+        </div>
+
+        <div className="detailsBlock-3">
+          <h1>{`₹${product.price}`}</h1>
+          <div className="detailsBlock-3-1">
+            <div className="detailsBlock-3-1-1">
+              <button onClick={decreaseQuantity}>-</button>
+              <input readOnly type="number" value={quantity} />
+              <button onClick={increaseQuantity}>+</button>
+            </div>
+            <button
+              disabled={product.Stock < 1 ? true : false}
+              onClick={addToCartHandler}
+            >
+              Add to Cart
+            </button>
+          </div>
+
+          <p>
+            Status:
+            <b className={product.Stock < 1 ? "redColor" : "greenColor"}>
+              {product.Stock < 1 ? "OutOfStock" : "InStock"}
+            </b>
+          </p>
+        </div>
+
+        <div className="detailsBlock-4">
+          Description : <p>{product.description}</p>
+        </div>
+
       </div>
     </Fragment>
   );
