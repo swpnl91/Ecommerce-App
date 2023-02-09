@@ -4,3 +4,24 @@
   /* making scrolling smooth */
   scroll-behavior: smooth;
 }
+
+/* Chrome, Safari, Edge, Opera */
+/* removes upwards-downwards arrows from input fields */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox - same as above */
+input[type="number"] {
+  -moz-appearance: textfield;
+}
+
+/* These colours are for out-of-stock/in-stock colours */
+.greenColor {
+  color: green !important;
+}
+.redColor {
+  color: red !important;
+}
