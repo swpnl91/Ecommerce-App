@@ -26,6 +26,11 @@ const Home = () => {
 
   return (
     <Fragment>
+
+      {loading ? (
+        "loading"
+      ) : (
+        <Fragment>
           <MetaData title="E-store" />
 
           <div className="banner">
@@ -47,6 +52,9 @@ const Home = () => {
                 <Product key={product._id} product={product} />
             ))}
           </div>
+
+        </Fragment>
+      )}
 
     </Fragment>
   );
