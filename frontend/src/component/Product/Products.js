@@ -31,6 +31,7 @@ const Products = ({ match }) => {
   const [currentPage, setCurrentPage] = useState(1);
   const [price, setPrice] = useState([0, 50000]);
   const [category, setCategory] = useState("");
+  const [ratings, setRatings] = useState(0);
 
   const {
     products,
@@ -106,7 +107,21 @@ const Products = ({ match }) => {
               ))}
             </ul>
 
-            
+            <fieldset>
+                {/* 'legend' specifies what kind of component it is. Refer material UI  */}
+              <Typography component="legend">Ratings Above</Typography>
+              <Slider
+                value={ratings}
+                onChange={(e, newRating) => {
+                  setRatings(newRating);
+                }}
+                aria-labelledby="continuous-slider"
+                valueLabelDisplay="auto"
+                min={0}
+                max={5}
+              />
+            </fieldset>
+
           </div>
           
           {/* if product count is greater than results per page, only then show pagination */}
