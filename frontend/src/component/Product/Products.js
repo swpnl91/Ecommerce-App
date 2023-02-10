@@ -65,7 +65,8 @@ const Products = ({ match }) => {
             
             {/* A <p> tag with some default classes */}
             <Typography>Price</Typography>
-
+            
+            {/* This section is purposefully kept below the products so that it's easy to make it go below the 'products' section in mobile display. It'll be located to the side otherwise (like Amazon). */}
             <Slider
               value={price}
               onChange={priceHandler}
