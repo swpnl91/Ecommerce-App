@@ -17,6 +17,7 @@ const Products = ({ match }) => {
   const alert = useAlert();
 
   const [currentPage, setCurrentPage] = useState(1);
+  const [price, setPrice] = useState([0, 50000]);
 
   const {
     products,
@@ -30,6 +31,10 @@ const Products = ({ match }) => {
 
   const setCurrentPageNo = (e) => {
     setCurrentPage(e);
+  };
+
+  const priceHandler = (event, newPrice) => {
+    setPrice(newPrice);
   };
 
   useEffect(() => {
@@ -57,14 +62,18 @@ const Products = ({ match }) => {
           </div>
 
           <div className="filterBox">
+            
+            {/* A <p> tag with some default classes */}
             <Typography>Price</Typography>
+
             <Slider
               value={price}
               onChange={priceHandler}
               valueLabelDisplay="auto"
+              // 'range-slider' - type of slider as there are different types offered by material UI
               aria-labelledby="range-slider"
               min={0}
-              max={25000}
+              max={50000}
             />
 
             
