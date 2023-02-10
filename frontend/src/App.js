@@ -7,6 +7,7 @@ import React from "react";
 import Footer from "./component/layout/Footer/Footer";
 import Home from "./component/Home/Home";
 import ProductDetails from "./component/Product/ProductDetails";
+import Products from "./component/Product/Products";
 
 function App() {
 
@@ -23,7 +24,8 @@ function App() {
       <Header />
       
       <Route exact path="/" component={Home} /> 
-      <Route exact path="/product/:id" component={ProductDetails} /> 
+      <Route exact path="/product/:id" component={ProductDetails} />
+      <Route exact path="/products" component={Products} /> 
 
       <Footer />
     </Router>
