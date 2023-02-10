@@ -11,6 +11,18 @@ import Typography from "@material-ui/core/Typography";
 
 
 
+const categories = [
+  "Laptop",
+  "Footwear",
+  "Bottom",
+  "Tops",
+  "Attire",
+  "Camera",
+  "SmartPhones",
+];
+
+
+
 const Products = ({ match }) => {
   const dispatch = useDispatch();
 
@@ -18,6 +30,7 @@ const Products = ({ match }) => {
 
   const [currentPage, setCurrentPage] = useState(1);
   const [price, setPrice] = useState([0, 50000]);
+  const [category, setCategory] = useState("");
 
   const {
     products,
@@ -66,7 +79,7 @@ const Products = ({ match }) => {
 
           <div className="filterBox">
             
-            {/* A <p> tag with some default classes */}
+            {/* A <p> tag with some default classes added by material UI*/}
             <Typography>Price</Typography>
             
             {/* This section is purposefully kept below the products so that it's easy to make it go below the 'products' section in mobile display. It'll be located to the side otherwise (like Amazon). */}
@@ -79,6 +92,19 @@ const Products = ({ match }) => {
               min={0}
               max={50000}
             />
+
+            <Typography>Categories</Typography>
+            <ul className="categoryBox">
+              {categories.map((category) => (
+                <li
+                  className="category-link"
+                  key={category}
+                  onClick={() => setCategory(category)}
+                >
+                  {category}
+                </li>
+              ))}
+            </ul>
 
             
           </div>
