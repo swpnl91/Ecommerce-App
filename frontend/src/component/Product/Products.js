@@ -38,8 +38,8 @@ const Products = ({ match }) => {
       dispatch(clearErrors());
     }
 
-    dispatch(getProduct(keyword));
-  }, [dispatch, keyword, alert, error]);
+    dispatch(getProduct(keyword, currentPage));
+  }, [dispatch, keyword, currentPage, alert, error]);
 
   return (
     <Fragment>
@@ -56,7 +56,8 @@ const Products = ({ match }) => {
             ))}
           </div>
           
-          {resultPerPage < count && (
+          {/* if product count is greater than results per page, only then show pagination */}
+          {resultPerPage < productsCount && (
             <div className="paginationBox">
               <Pagination
                 activePage={currentPage}
