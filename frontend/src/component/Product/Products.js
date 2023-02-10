@@ -25,6 +25,7 @@ const Products = ({ match }) => {
     error,
     productsCount,
     resultPerPage,
+    filteredProductsCount
   } = useSelector((state) => state.products);
 
   const keyword = match.params.keyword;
@@ -37,14 +38,16 @@ const Products = ({ match }) => {
     setPrice(newPrice);
   };
 
+  let count = filteredProductsCount;
+
   useEffect(() => {
     if (error) {
       alert.error(error);
       dispatch(clearErrors());
     }
 
-    dispatch(getProduct(keyword, currentPage));
-  }, [dispatch, keyword, currentPage, alert, error]);
+    dispatch(getProduct(keyword, currentPage, price));
+  }, [dispatch, keyword, currentPage, price, alert, error]);
 
   return (
     <Fragment>
@@ -81,7 +84,7 @@ const Products = ({ match }) => {
           </div>
           
           {/* if product count is greater than results per page, only then show pagination */}
-          {resultPerPage < productsCount && (
+          {resultPerPage < count && (
             <div className="paginationBox">
               <Pagination
                 activePage={currentPage}
