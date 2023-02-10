@@ -6,6 +6,9 @@ import Loader from "../layout/Loader/Loader";
 import ProductCard from "../Home/ProductCard";
 
 
+import { useAlert } from "react-alert";
+
+
 
 const Products = ({ match }) => {
   const dispatch = useDispatch();
@@ -34,7 +37,15 @@ const Products = ({ match }) => {
         <Loader />
       ) : (
         <Fragment>
-          
+        <h2 className="productsHeading">Products</h2>
+
+        <div className="products">
+          {products &&
+            products.map((product) => (
+              <ProductCard key={product._id} product={product} />
+          ))}
+        </div>
+
         </Fragment>
       )}
     </Fragment>
