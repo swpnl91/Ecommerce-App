@@ -13,12 +13,14 @@ import {
 
 // Getting All Products
 export const getProduct =
-  () =>
+  (keyword = "") =>
   async (dispatch) => {
     try {
       dispatch({ type: ALL_PRODUCT_REQUEST });
 
-      const { data } = await axios.get("/api/v1/products");     //   '/api/v1/products' originally
+      let link = `/api/v1/products?keyword=${keyword}`;
+
+      const { data } = await axios.get(link);     //   '/api/v1/products' originally
 
       dispatch({
         type: ALL_PRODUCT_SUCCESS,

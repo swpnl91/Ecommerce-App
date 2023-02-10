@@ -22,14 +22,16 @@ const Products = ({ match }) => {
     productsCount,
   } = useSelector((state) => state.products);
 
+  const keyword = match.params.keyword;
+
   useEffect(() => {
     if (error) {
       alert.error(error);
       dispatch(clearErrors());
     }
 
-    dispatch(getProduct());
-  }, [dispatch, alert, error]);
+    dispatch(getProduct(keyword));
+  }, [dispatch, keyword, alert, error]);
 
   return (
     <Fragment>
