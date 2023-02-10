@@ -5,9 +5,9 @@ import { clearErrors, getProduct } from "../../actions/productAction";
 import Loader from "../layout/Loader/Loader";
 import ProductCard from "../Home/ProductCard";
 import Pagination from "react-js-pagination";
-
-
+import Slider from "@material-ui/core/Slider";
 import { useAlert } from "react-alert";
+import Typography from "@material-ui/core/Typography";
 
 
 
@@ -54,6 +54,20 @@ const Products = ({ match }) => {
               products.map((product) => (
                 <ProductCard key={product._id} product={product} />
             ))}
+          </div>
+
+          <div className="filterBox">
+            <Typography>Price</Typography>
+            <Slider
+              value={price}
+              onChange={priceHandler}
+              valueLabelDisplay="auto"
+              aria-labelledby="range-slider"
+              min={0}
+              max={25000}
+            />
+
+            
           </div>
           
           {/* if product count is greater than results per page, only then show pagination */}
