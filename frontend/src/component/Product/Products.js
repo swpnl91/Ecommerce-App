@@ -16,14 +16,21 @@ const Products = ({ match }) => {
 
   const alert = useAlert();
 
+  const [currentPage, setCurrentPage] = useState(1);
+
   const {
     products,
     loading,
     error,
     productsCount,
+    resultPerPage,
   } = useSelector((state) => state.products);
 
   const keyword = match.params.keyword;
+
+  const setCurrentPageNo = (e) => {
+    setCurrentPage(e);
+  };
 
   useEffect(() => {
     if (error) {
