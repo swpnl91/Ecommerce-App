@@ -8,6 +8,7 @@ import Pagination from "react-js-pagination";
 import Slider from "@material-ui/core/Slider";
 import { useAlert } from "react-alert";
 import Typography from "@material-ui/core/Typography";
+import MetaData from "../layout/MetaData";
 
 
 
@@ -69,6 +70,9 @@ const Products = ({ match }) => {
         <Loader />
       ) : (
         <Fragment>
+
+          <MetaData title="PRODUCTS -- E-store" />
+
           <h2 className="productsHeading">Products</h2>
 
           <div className="products">
@@ -109,7 +113,7 @@ const Products = ({ match }) => {
 
             <fieldset>
                 {/* 'legend' specifies what kind of component it is. Refer material UI  */}
-              <Typography component="legend">Ratings Above</Typography>
+              <Typography component="legend">Ratings Filter</Typography>
               <Slider
                 value={ratings}
                 onChange={(e, newRating) => {

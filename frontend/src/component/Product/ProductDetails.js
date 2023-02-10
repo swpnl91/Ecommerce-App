@@ -9,6 +9,7 @@ import {
 import ReviewCard from "./ReviewCard.js";
 import Loader from "../layout/Loader/Loader";
 import { useAlert } from "react-alert";
+import MetaData from "../layout/MetaData";
 
 
 const ProductDetails = ({ match }) => {     /* match is received as a prop (default prop) Google 'match' object/parameter in react*/
@@ -44,6 +45,7 @@ const ProductDetails = ({ match }) => {     /* match is received as a prop (defa
       {loading ? <Loader /> : (
 
         <Fragment>
+          <MetaData title={`${product.name} -- E-store`} />
           <div className="ProductDetails">
             <div>
               <Carousel>
