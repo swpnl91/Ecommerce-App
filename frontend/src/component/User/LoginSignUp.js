@@ -25,6 +25,17 @@ const LoginSignUp = ({ history, location }) => {
   const [loginEmail, setLoginEmail] = useState("");
   const [loginPassword, setLoginPassword] = useState("");
 
+  const [user, setUser] = useState({
+    name: "",
+    email: "",
+    password: "",
+  });
+
+  const { name, email, password } = user;
+
+  const [avatar, setAvatar] = useState("/Profile.png");
+  const [avatarPreview, setAvatarPreview] = useState("/Profile.png");
+
   const loginSubmit = (e) => {
     e.preventDefault();
     
@@ -41,6 +52,24 @@ const LoginSignUp = ({ history, location }) => {
     myForm.set("password", password);
     myForm.set("avatar", avatar);
     
+  };
+
+  const registerDataChange = (e) => {
+    if (e.target.name === "avatar") {
+      const reader = new FileReader();
+
+      reader.onload = () => {   // .onload means just when it loads
+        // there are 3 readyStates 0 (initiate), 1 (in-process), 2 (done) 
+        if (reader.readyState === 2) {
+          setAvatarPreview(reader.result);      // reader.result is the profile.png
+          setAvatar(reader.result);
+        }
+      };
+
+      reader.readAsDataURL(e.target.files[0]);
+    } else {
+      setUser({ ...user, [e.target.name]: e.target.value });
+    }
   };
 
   const switchTabs = (e, tab) => {
