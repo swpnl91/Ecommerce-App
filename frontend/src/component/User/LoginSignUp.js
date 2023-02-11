@@ -1,4 +1,4 @@
-import React, { Fragment, useRef, useState } from "react";
+import React, { Fragment, useRef, useState, useEffect  } from "react";
 import "./LoginSignUp.css";
 import Loader from "../layout/Loader/Loader";
 import { Link } from "react-router-dom";
@@ -38,7 +38,7 @@ const LoginSignUp = ({ history, location }) => {
 
   const loginSubmit = (e) => {
     e.preventDefault();
-    
+    dispatch(login(loginEmail, loginPassword));
   };
 
   const registerSubmit = (e) => {
@@ -71,6 +71,17 @@ const LoginSignUp = ({ history, location }) => {
       setUser({ ...user, [e.target.name]: e.target.value });
     }
   };
+
+  useEffect(() => {
+    if (error) {
+      alert.error(error);
+      dispatch(clearErrors());
+    }
+
+    if (isAuthenticated) {
+      history.push("/account");
+    }
+  }, [dispatch, error, alert, history, isAuthenticated]);
 
   // for switching between 'login' and 'register' functionality
   const switchTabs = (e, tab) => {
