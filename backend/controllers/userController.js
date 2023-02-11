@@ -9,6 +9,7 @@ const cloudinary = require("cloudinary");
 // Registering a User
 exports.registerUser = catchAsyncErrors(async (req, res, next) => {
   
+  // cloudinary basically stores the file for a user's avatar (profile pic) and then the consequent url/link (for the file) with a public id is stored in mongodb
   const myCloud = await cloudinary.v2.uploader.upload(req.body.avatar, {
     folder: "avatars",  // In your cloudinary account in media library, you've to creat a folder named 'avatars' for this to work
     width: 150,
@@ -22,8 +23,8 @@ exports.registerUser = catchAsyncErrors(async (req, res, next) => {
     email,
     password,
     avatar: {
-      public_id: myCloud.public_id,
-      url: myCloud.secure_url
+      public_id: myCloud.public_id,      // storing cloudinary id for the avatar image in mongodb
+      url: myCloud.secure_url            // storing cloudinary url for the avatar image in mongodb
     }
   });
 
