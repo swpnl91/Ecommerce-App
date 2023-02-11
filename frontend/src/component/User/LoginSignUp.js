@@ -72,6 +72,7 @@ const LoginSignUp = ({ history, location }) => {
     }
   };
 
+  // for switching between 'login' and 'register' functionality
   const switchTabs = (e, tab) => {
     if (tab === "login") {
       switcherTab.current.classList.add("shiftToNeutral");
