@@ -27,7 +27,20 @@ const LoginSignUp = ({ history, location }) => {
 
   const loginSubmit = (e) => {
     e.preventDefault();
-    dispatch(login(loginEmail, loginPassword));
+    
+  };
+
+  const registerSubmit = (e) => {
+    e.preventDefault();
+
+    // this relates to 'encType - multipart/form-data'. It's a way to construct a set of key/value pairs representing fields and their values that can be sent using fetch() method
+    const myForm = new FormData();
+
+    myForm.set("name", name);
+    myForm.set("email", email);
+    myForm.set("password", password);
+    myForm.set("avatar", avatar);
+    
   };
 
   const switchTabs = (e, tab) => {
@@ -149,7 +162,7 @@ const LoginSignUp = ({ history, location }) => {
                 </div>
 
                 <input type="submit" value="Register" className="signUpBtn" />
-                
+
               </form>
               
             </div>
