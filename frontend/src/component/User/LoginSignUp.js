@@ -1,6 +1,7 @@
-import React, { Fragment } from "react";
+import React, { Fragment, useRef } from "react";
 import "./LoginSignUp.css";
 import Loader from "../layout/Loader/Loader";
+import { Link } from "react-router-dom";
 
 import { useDispatch, useSelector } from "react-redux";
 import { clearErrors, login, register } from "../../actions/userAction";
@@ -14,6 +15,28 @@ const LoginSignUp = ({ history, location }) => {
   const { error, loading, isAuthenticated } = useSelector(
     (state) => state.user
   );
+
+  const loginTab = useRef(null);
+  const registerTab = useRef(null);
+  const switcherTab = useRef(null);
+
+  const switchTabs = (e, tab) => {
+    if (tab === "login") {
+      switcherTab.current.classList.add("shiftToNeutral");
+      switcherTab.current.classList.remove("shiftToRight");
+
+      registerTab.current.classList.remove("shiftToNeutralForm");
+      loginTab.current.classList.remove("shiftToLeft");
+    }
+    if (tab === "register") {
+      switcherTab.current.classList.add("shiftToRight");
+      switcherTab.current.classList.remove("shiftToNeutral");
+
+      registerTab.current.classList.add("shiftToNeutralForm");
+      loginTab.current.classList.add("shiftToLeft");
+    }
+  };
+
 
   return (
     <Fragment>
