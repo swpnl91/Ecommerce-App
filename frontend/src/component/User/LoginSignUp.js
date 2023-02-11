@@ -94,6 +94,63 @@ const LoginSignUp = ({ history, location }) => {
                 
               </form>
               
+              <form
+                className="signUpForm"
+                ref={registerTab}
+                // can also upload profile pic/image with encType
+                encType="multipart/form-data"
+                onSubmit={registerSubmit}
+              >
+
+                <div className="signUpName">
+                  <FaceIcon />
+                  <input
+                    type="text"
+                    placeholder="Name"
+                    required
+                    name="name"
+                    value={name}
+                    onChange={registerDataChange}
+                  />
+                </div>
+
+                <div className="signUpEmail">
+                  <MailOutlineIcon />
+                  <input
+                    type="email"
+                    placeholder="Email"
+                    required
+                    name="email"
+                    value={email}
+                    onChange={registerDataChange}
+                  />
+                </div>
+
+                <div className="signUpPassword">
+                  <LockOpenIcon />
+                  <input
+                    type="password"
+                    placeholder="Password"
+                    required
+                    name="password"
+                    value={password}
+                    onChange={registerDataChange}
+                  />
+                </div>
+
+                <div id="registerImage">
+                  <img src={avatarPreview} alt="Avatar Preview" />
+                  <input
+                    type="file"
+                    name="avatar"
+                    accept="image/*"
+                    onChange={registerDataChange}
+                  />
+                </div>
+
+                <input type="submit" value="Register" className="signUpBtn" />
+                
+              </form>
               
             </div>
           </div>
