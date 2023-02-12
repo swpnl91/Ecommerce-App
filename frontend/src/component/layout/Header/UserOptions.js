@@ -67,6 +67,7 @@ const UserOptions = ({ user }) => {
 
   return (
     <Fragment>
+      {/* Backdrop is applied when you hover over the userOptions icon */}
       <Backdrop open={open} style={{ zIndex: "10" }} />
       <SpeedDial
         ariaLabel="SpeedDial tooltip example"
