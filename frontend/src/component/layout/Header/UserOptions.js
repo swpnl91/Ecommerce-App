@@ -15,8 +15,12 @@ import { useDispatch, useSelector } from "react-redux";
 
 const UserOptions = ({ user }) => {
   
+  const { cartItems } = useSelector((state) => state.cart);
 
   const [open, setOpen] = useState(false);
+  const history = useHistory();
+  const alert = useAlert();
+  const dispatch = useDispatch();
 
   const options = [
     { icon: <ListAltIcon />, name: "Orders", func: orders },
@@ -42,7 +46,23 @@ const UserOptions = ({ user }) => {
     });
   }
 
-  
+  function dashboard() {
+    history.push("/admin/dashboard");
+  }
+
+  function orders() {
+    history.push("/orders");
+  }
+  function account() {
+    history.push("/account");
+  }
+  function cart() {
+    history.push("/cart");
+  }
+  function logoutUser() {
+    dispatch(logout());
+    alert.success("You've logged out successfully");
+  }
 
 
   return (
