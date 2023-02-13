@@ -73,8 +73,11 @@ const UpdateProfile = ({ history }) => {
 
   return (
     <Fragment>
-      
+      {loading ? (
+        <Loader />
+      ) : (
         <Fragment>
+          <MetaData title="Update Profile" />
           <div className="updateProfileContainer">
             <div className="updateProfileBox">
               <h2 className="updateProfileHeading">Update Profile</h2>
@@ -124,12 +127,12 @@ const UpdateProfile = ({ history }) => {
                   value="Update"
                   className="updateProfileBtn"
                 />
-                
+
               </form>
             </div>
           </div>
         </Fragment>
-      
+      )}
     </Fragment>
   );
 };
