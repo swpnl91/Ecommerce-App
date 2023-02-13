@@ -52,9 +52,11 @@ const UpdatePassword = ({ history }) => {
 
   return (
     <Fragment>
-      
+      {loading ? (
+        <Loader />
+      ) : (
         <Fragment>
-          
+          <MetaData title="Change Password" />
           <div className="updatePasswordContainer">
             <div className="updatePasswordBox">
               <h2 className="updatePasswordHeading">Update Profile</h2>
@@ -102,13 +104,13 @@ const UpdatePassword = ({ history }) => {
                   value="Change"
                   className="updatePasswordBtn"
                 />
-                
+
               </form>
               
             </div>
           </div>
         </Fragment>
-      
+      )}
     </Fragment>
   );
 };
