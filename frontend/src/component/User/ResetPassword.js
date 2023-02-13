@@ -47,9 +47,11 @@ const ResetPassword = ({ history, match }) => {
 
   return (
     <Fragment>
-      
+      {loading ? (
+        <Loader />
+      ) : (
         <Fragment>
-          
+          <MetaData title="Change Password" />
           <div className="resetPasswordContainer">
             <div className="resetPasswordBox">
               <h2 className="resetPasswordHeading">Update Profile</h2>
@@ -58,7 +60,7 @@ const ResetPassword = ({ history, match }) => {
                 className="resetPasswordForm"
                 onSubmit={resetPasswordSubmit}
               >
-              
+
                 <div>
                   <LockOpenIcon />
                   <input
@@ -92,7 +94,7 @@ const ResetPassword = ({ history, match }) => {
             </div>
           </div>
         </Fragment>
-      
+      )}
     </Fragment>
   );
 };
