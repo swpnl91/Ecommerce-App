@@ -13,7 +13,7 @@ import {
   UPDATE_PROFILE_REQUEST,
   UPDATE_PROFILE_SUCCESS,
   UPDATE_PROFILE_FAIL,
-  UPDATE_PROFILE_RESET,
+  
   
   CLEAR_ERRORS,
 } from "../constants/userConstants";
