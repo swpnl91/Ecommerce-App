@@ -60,7 +60,7 @@ function App() {
           component={UpdatePassword}
       />
 
-<Route exact path="/password/forgot" component={ForgotPassword} />
+      <Route exact path="/password/forgot" component={ForgotPassword} />
 
 
 
