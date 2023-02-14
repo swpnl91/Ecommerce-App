@@ -39,7 +39,14 @@ const Cart = ({ history }) => {
 
   return (
     <Fragment>
-      
+      {cartItems.length === 0 ? (
+        <div className="emptyCart">
+          <RemoveShoppingCartIcon />
+
+          <Typography>No Product in Your Cart</Typography>
+          <Link to="/products">View Products</Link>
+        </div>
+      ) : (
         <Fragment>
           <div className="cartPage">
             
@@ -49,7 +56,9 @@ const Cart = ({ history }) => {
               <p>Subtotal</p>
             </div>
 
-            
+            {cartItems &&
+              cartItems.map((item) => (
+  
                 <div className="cartContainer" key={item.product}>
                   
                   <CartItemCard item={item} deleteCartItems={deleteCartItems} />
@@ -81,11 +90,13 @@ const Cart = ({ history }) => {
                   }`}</p>
 
                 </div>
-              
+              ))}
+            
+            
 
           </div>
         </Fragment>
-      
+      )}
     </Fragment>
   );
 };
