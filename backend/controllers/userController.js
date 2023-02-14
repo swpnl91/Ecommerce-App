@@ -84,9 +84,10 @@ exports.forgotPassword = catchAsyncErrors(async (req, res, next) => {
   await user.save({ validateBeforeSave: false });    // This is done to save the newly created token and its expiry with the user as both the things are newly created 
 
   // Creating a link to be sent for resetting the password
-  const resetPasswordUrl = `${req.protocol}://${req.get(   
-    "host"
-  )}/api/v1/password/reset/${resetToken}`;
+  // const resetPasswordUrl = `${req.protocol}://${req.get(   
+  //   "host"
+  // )}/api/v1/password/reset/${resetToken}`;
+  const resetPasswordUrl = `${process.env.FRONTEND_URL}/password/reset/${resetToken}`;
 
   const message = `Your password reset token is :- \n\n ${resetPasswordUrl} \n\nIf you have not requested this email then, please ignore it.`;
 
