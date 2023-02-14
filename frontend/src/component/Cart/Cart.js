@@ -25,6 +25,34 @@ const Cart = ({ history }) => {
             
                 <div className="cartContainer" key={item.product}>
                   
+                  <CartItemCard item={item} deleteCartItems={deleteCartItems} />
+                  
+                  <div className="cartInput">
+                    <button
+                      onClick={() =>
+                        decreaseQuantity(item.product, item.quantity)
+                      }
+                    >
+                      -
+                    </button>
+                    <input type="number" value={item.quantity} readOnly />
+                    <button
+                      onClick={() =>
+                        increaseQuantity(
+                          item.product,
+                          item.quantity,
+                          item.stock
+                        )
+                      }
+                    >
+                      +
+                    </button>
+                  </div>
+
+                  <p className="cartSubtotal">{`₹${
+                    item.price * item.quantity
+                  }`}</p>
+
                 </div>
               
 
