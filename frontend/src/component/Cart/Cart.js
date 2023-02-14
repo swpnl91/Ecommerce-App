@@ -18,6 +18,11 @@ const Cart = ({ history }) => {
             </div>
 
             
+                <div className="cartContainer" key={item.product}>
+                  
+                </div>
+              
+
           </div>
         </Fragment>
       
