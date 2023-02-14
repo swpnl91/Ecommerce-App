@@ -65,7 +65,7 @@ function App() {
       <Route exact path="/password/forgot" component={ForgotPassword} />
 
       <Route exact path="/password/reset/:token" component={ResetPassword} />
-
+    
 
 
       <Route exact path="/login" component={LoginSignUp} />
