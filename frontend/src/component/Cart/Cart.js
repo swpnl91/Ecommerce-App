@@ -11,6 +11,13 @@ const Cart = ({ history }) => {
         <Fragment>
           <div className="cartPage">
             
+            <div className="cartHeader">
+              <p>Product</p>
+              <p>Quantity</p>
+              <p>Subtotal</p>
+            </div>
+
+            
           </div>
         </Fragment>
       
