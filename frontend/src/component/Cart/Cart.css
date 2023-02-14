@@ -92,12 +92,12 @@
   color: rgba(0, 0, 0, 0.753);
 }
 
-.cartGrossProfit {
+.cartGrossTotal {
   display: grid;
   grid-template-columns: 2fr 1.2fr;
 }
 
-.cartGrossProfitBox {
+.cartGrossTotalBox {
   border-top: 3px solid tomato;
   margin: 1vmax 4vmax;
   box-sizing: border-box;
@@ -160,12 +160,12 @@
     font: 300 2vmax "Roboto";
   }
 
-  .cartGrossProfit {
+  .cartGrossTotal {
     display: grid;
     grid-template-columns: 0fr 2fr;
   }
 
-  .cartGrossProfitBox {
+  .cartGrossTotalBox {
     padding: 2vmax;
     font: 300 2vmax "Roboto";
   }

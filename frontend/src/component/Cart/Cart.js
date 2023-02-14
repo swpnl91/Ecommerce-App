@@ -75,7 +75,7 @@ const Cart = ({ history }) => {
                     <button
                       onClick={() =>
                         increaseQuantity(
-                          item.product,
+                          item.product,       // product id basically
                           item.quantity,
                           item.stock
                         )
@@ -85,18 +85,18 @@ const Cart = ({ history }) => {
                     </button>
                   </div>
 
-                  <p className="cartSubtotal">{`₹${
+                  <p className="cartSubtotal">{`$${
                     item.price * item.quantity
                   }`}</p>
 
                 </div>
               ))}
             
-            <div className="cartGrossProfit">
+            <div className="cartGrossTotal">
               <div></div>
-              <div className="cartGrossProfitBox">
+              <div className="cartGrossTotalBox">
                 <p>Gross Total</p>
-                <p>{`₹${cartItems.reduce(
+                <p>{`$${cartItems.reduce(
                   (acc, item) => acc + item.quantity * item.price,
                   0
                 )}`}</p>
