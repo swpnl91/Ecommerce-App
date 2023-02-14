@@ -11,6 +11,8 @@ import {
   userReducer,
 } from "./reducers/userReducer";
 
+import { cartReducer } from "./reducers/cartReducer";
+
 
 
 const reducer = combineReducers({
@@ -19,10 +21,16 @@ const reducer = combineReducers({
   user: userReducer,
   profile: profileReducer,
   forgotPassword: forgotPasswordReducer,
+  cart: cartReducer,
 });
 
 let initialState = {
-  
+  cart: {
+    cartItems: localStorage.getItem("cartItems")       // if there's data stored in the local storage then uses that as the initial state otherwise keeps it empty
+      ? JSON.parse(localStorage.getItem("cartItems"))    // we use JSON.parse here and JSON.stringify in cartAction.js
+      : [],
+      
+  },
 };
 
 const middleware = [thunk];
