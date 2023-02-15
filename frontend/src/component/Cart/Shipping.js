@@ -36,7 +36,36 @@ const Shipping = ({ history }) => {
         <div className="shippingBox">
           <h2 className="shippingHeading">Shipping Details</h2>
 
-          
+          <form
+            className="shippingForm"
+            encType="multipart/form-data"
+            onSubmit={shippingSubmit}
+          >
+            
+            <div>
+              <HomeIcon />
+              <input
+                type="text"
+                placeholder="Address"
+                required
+                value={address}
+                onChange={(e) => setAddress(e.target.value)}
+              />
+            </div>
+
+            <div>
+              <LocationCityIcon />
+              <input
+                type="text"
+                placeholder="City"
+                required
+                value={city}
+                onChange={(e) => setCity(e.target.value)}
+              />
+            </div>
+
+          </form>
+
         </div>
       </div>
 
