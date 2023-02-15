@@ -22,6 +22,7 @@ import ForgotPassword from "./component/User/ForgotPassword";
 import ResetPassword from "./component/User/ResetPassword";
 import Cart from "./component/Cart/Cart";
 import Shipping from "./component/Cart/Shipping";
+import ConfirmOrder from "./component/Cart/ConfirmOrder";
 
 
 
@@ -74,6 +75,8 @@ function App() {
       <Route exact path="/cart" component={Cart} />
 
       <ProtectedRoute exact path="/shipping" component={Shipping} />
+
+      <ProtectedRoute exact path="/order/confirm" component={ConfirmOrder} />
 
       <Footer />
     </Router>
