@@ -21,7 +21,7 @@ export const addItemsToCart = (id, quantity) => async (dispatch, getState) => {
     },
   });
 
-  // This is done so that if the user refreshes the page AFTER adding product to the cart then it shouldn't affect the the number of items in the cart 
+  // This is done so that if the user refreshes the page AFTER adding product to the cart then it shouldn't affect the number of items in the cart 
   localStorage.setItem("cartItems", JSON.stringify(getState().cart.cartItems));
 };
 
@@ -33,4 +33,14 @@ export const removeItemsFromCart = (id) => async (dispatch, getState) => {
   });
 
   localStorage.setItem("cartItems", JSON.stringify(getState().cart.cartItems));
+};
+
+// SAVE SHIPPING INFO
+export const saveShippingInfo = (data) => async (dispatch) => {
+  dispatch({
+    type: SAVE_SHIPPING_INFO,
+    payload: data,
+  });
+
+  localStorage.setItem("shippingInfo", JSON.stringify(data));     // saving info in localStorage. This is done so that if the user refreshes the page AFTER hitting checkout then it shouldn't affect the shipping info 
 };
