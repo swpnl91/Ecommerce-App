@@ -64,6 +64,74 @@ const Shipping = ({ history }) => {
               />
             </div>
 
+            <div>
+              <PinDropIcon />
+              <input
+                type="number"
+                placeholder="Pin Code"
+                required
+                value={pinCode}
+                onChange={(e) => setPinCode(e.target.value)}
+              />
+            </div>
+
+            <div>
+              <PhoneIcon />
+              <input
+                type="number"
+                placeholder="Phone Number"
+                required
+                value={phoneNo}
+                onChange={(e) => setPhoneNo(e.target.value)}
+                size="10"
+              />
+            </div>
+
+            <div>
+              <PublicIcon />
+
+              <select
+                required
+                value={country}
+                onChange={(e) => setCountry(e.target.value)}    // e.target.value = item.isoCode which can be 'US' or 'CA' or 'IN'
+              >
+                <option value="">Country</option>
+                {Country &&
+                  Country.getAllCountries().map((item) => (      // .getAllCountries is a built-in method that we get from the package. We're basically rendering all the countries here using the .map() function
+                    <option key={item.isoCode} value={item.isoCode}>
+                      {item.name}    
+                    </option>
+                  ))}
+              </select>
+            </div>
+
+            {country && (     // comes from the 'state' that we manage. Means - if someone has already chosen the country then the following gets rendered 
+              <div>
+                <TransferWithinAStationIcon />
+
+                <select
+                  required
+                  value={state}
+                  onChange={(e) => setState(e.target.value)}
+                >
+                  <option value="">State</option>
+                  {State &&
+                    State.getStatesOfCountry(country).map((item) => (     // 'State' comes from the package to which we then pass the country code that's stored in 'country' and map through all the states of that particular country
+                      <option key={item.isoCode} value={item.isoCode}>
+                        {item.name}
+                      </option>
+                    ))}
+                </select>
+              </div>
+            )}
+
+            <input
+              type="submit"
+              value="Continue"
+              className="shippingBtn"
+              disabled={state ? false : true}
+            />
+
           </form>
 
         </div>
