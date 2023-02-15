@@ -24,7 +24,18 @@ const ConfirmOrder = ({ history }) => {
 
   const address = `${shippingInfo.address}, ${shippingInfo.city}, ${shippingInfo.state}, ${shippingInfo.pinCode}, ${shippingInfo.country}`;
 
-  
+  const proceedToPayment = () => {
+    const data = {
+      subtotal,
+      shippingCharges,
+      tax,
+      totalPrice,
+    };
+
+    sessionStorage.setItem("orderInfo", JSON.stringify(data));
+
+    history.push("/process/payment");
+  };
 
   return (
     <Fragment>
