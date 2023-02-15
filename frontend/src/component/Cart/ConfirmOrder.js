@@ -32,7 +32,7 @@ const ConfirmOrder = ({ history }) => {
       totalPrice,
     };
 
-    sessionStorage.setItem("orderInfo", JSON.stringify(data));
+    sessionStorage.setItem("orderInfo", JSON.stringify(data));    // we use session storage here instead of local storage. They're similar but session storage allows for taking the security factor into consideration. With session storage, the data is lost if you close the tab for ex. It also allows us to access the data in the backend
 
     history.push("/process/payment");
   };
@@ -45,7 +45,7 @@ const ConfirmOrder = ({ history }) => {
     
       <div className="confirmOrderPage">
         
-      <div>
+        <div>
 
           <div className="confirmshippingArea">
             <Typography>Shipping Info</Typography>
@@ -85,8 +85,8 @@ const ConfirmOrder = ({ history }) => {
                       {item.name}
                     </Link>{" "}
                     <span>
-                      {item.quantity} X ₹{item.price} ={" "}
-                      <b>₹{item.price * item.quantity}</b>
+                      {item.quantity} X ${item.price} ={" "}
+                      <b>${item.price * item.quantity}</b>
                     </span>
                   </div>
                 ))}
@@ -97,7 +97,7 @@ const ConfirmOrder = ({ history }) => {
 
         </div>
 
-        {/*  */}
+        {/* Done just for separation */}
 
         <div>
 
@@ -120,7 +120,6 @@ const ConfirmOrder = ({ history }) => {
               <div>
                 <p>GST:</p>
                 <span>₹{tax}</span>
-              
               </div>
             
             </div>
