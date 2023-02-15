@@ -29,7 +29,9 @@ let initialState = {
     cartItems: localStorage.getItem("cartItems")       // if there's data stored in the local storage then uses that as the initial state otherwise keeps it empty
       ? JSON.parse(localStorage.getItem("cartItems"))    // we use JSON.parse here and JSON.stringify in cartAction.js
       : [],
-      
+    shippingInfo: localStorage.getItem("shippingInfo")     // same as above
+      ? JSON.parse(localStorage.getItem("shippingInfo"))
+      : {},   
   },
 };
 
