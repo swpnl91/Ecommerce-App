@@ -25,6 +25,10 @@ const Shipping = ({ history }) => {
   const [pinCode, setPinCode] = useState(shippingInfo.pinCode);
   const [phoneNo, setPhoneNo] = useState(shippingInfo.phoneNo);
 
+  const shippingSubmit = (e) => {
+    
+  };
+
   return (
     <Fragment>
       
