@@ -14,6 +14,16 @@ import { useAlert } from "react-alert";
 
 const Shipping = ({ history }) => {
   
+  const dispatch = useDispatch();
+  const alert = useAlert();
+  const { shippingInfo } = useSelector((state) => state.cart);
+
+  const [address, setAddress] = useState(shippingInfo.address);
+  const [city, setCity] = useState(shippingInfo.city);
+  const [state, setState] = useState(shippingInfo.state);
+  const [country, setCountry] = useState(shippingInfo.country);
+  const [pinCode, setPinCode] = useState(shippingInfo.pinCode);
+  const [phoneNo, setPhoneNo] = useState(shippingInfo.phoneNo);
 
   return (
     <Fragment>
