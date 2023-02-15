@@ -28,7 +28,7 @@ const UserOptions = ({ user }) => {
     {
       icon: (
         <ShoppingCartIcon
-          style={{ color: cartItems.length > 0 ? "tomato" : "unset" }}
+          style={{ color: cartItems.length > 0 ? "tomato" : "unset" }}   // style is added if there are items in the cart
         />
       ),
       name: `Cart(${cartItems.length})`,
@@ -92,6 +92,7 @@ const UserOptions = ({ user }) => {
             icon={item.icon}
             tooltipTitle={item.name}
             onClick={item.func}
+            // tooTipOpen=true/false is basically when the label is also shown (or hidden if false) with its name. This basically shows the label if window.innerWidth is less than or equal to 600 (on mobile devices)
             tooltipOpen={window.innerWidth <= 600 ? true : false}
           />
         ))}

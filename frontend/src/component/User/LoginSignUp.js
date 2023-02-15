@@ -72,6 +72,8 @@ const LoginSignUp = ({ history, location }) => {
     }
   };
 
+  const redirect = location.search ? location.search.split("=")[1] : "/account";       // 'location.search' is basically '?redirect=shipping' part of '/login?redirect=shipping' (from Cart.js) and we split it at '=' (it gives us an array) and use that which is at [1] position. 'shipping' in this case so we've '/shipping' route. If no 'location.search' then '/account' is used
+
   useEffect(() => {
     if (error) {
       alert.error(error);
@@ -79,9 +81,9 @@ const LoginSignUp = ({ history, location }) => {
     }
 
     if (isAuthenticated) {
-      history.push("/account");
+      history.push(redirect);
     }
-  }, [dispatch, error, alert, history, isAuthenticated]);
+  }, [dispatch, error, alert, history, isAuthenticated, redirect]);
 
   // for switching between 'login' and 'register' functionality
   const switchTabs = (e, tab) => {

@@ -34,7 +34,7 @@ const Cart = ({ history }) => {
   };
 
   const checkoutHandler = () => {
-    history.push("/login?redirect=shipping");
+    history.push("/login?redirect=shipping");     // 'location.search' is basically '?redirect=shipping' part of '/login?redirect=shipping' and we split it at '=' <-- that's what we've done in LoginSignUp.js
   };
 
   return (

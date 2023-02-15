@@ -9,6 +9,7 @@ const CartItemCard = ({ item, deleteCartItems }) => {
       <div>
         <Link to={`/product/${item.product}`}>{item.name}</Link>
         <span>{`Price: ₹${item.price}`}</span>
+        {/* Arrow function used for deleteCartItems becasue if you pass 'onClick={deleteCartItems(item.product)}' then it'll get called without even clicking */}
         <p onClick={() => deleteCartItems(item.product)}>Remove</p>
       </div>
     </div>
