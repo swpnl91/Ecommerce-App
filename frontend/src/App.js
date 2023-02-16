@@ -27,6 +27,7 @@ import axios from "axios";
 import Payment from "./component/Cart/Payment";   
 import { Elements } from "@stripe/react-stripe-js";
 import { loadStripe } from "@stripe/stripe-js";
+import OrderSuccess from "./component/Cart/OrderSuccess";
 
 
 
@@ -95,6 +96,8 @@ function App() {
       <Route exact path="/cart" component={Cart} />
 
       <ProtectedRoute exact path="/shipping" component={Shipping} />
+
+      <ProtectedRoute exact path="/success" component={OrderSuccess} />
 
       <ProtectedRoute exact path="/order/confirm" component={ConfirmOrder} />
 

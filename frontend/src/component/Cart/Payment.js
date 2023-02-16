@@ -90,7 +90,7 @@ const Payment = ({ history }) => {
         alert.error(result.error.message);
       } else {
         if (result.paymentIntent.status === "succeeded") {
-          order.paymentInfo = {
+          order.paymentInfo = {                       // 'paymentInfo' is a new property that's being added to 'order' which is expected in backend
             id: result.paymentIntent.id,
             status: result.paymentIntent.status,
           };
