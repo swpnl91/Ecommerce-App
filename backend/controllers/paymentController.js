@@ -17,7 +17,7 @@ exports.processPayment = catchAsyncErrors(async (req, res, next) => {
 });
 
 
-// StripeApiKey needs to be sent to the front end
+// StripeApiKey needs to be sent to the front end (can be found in App.js in 'frontend')
 exports.sendStripeApiKey = catchAsyncErrors(async (req, res, next) => {
   res.status(200).json({ stripeApiKey: process.env.STRIPE_API_KEY });
 });
