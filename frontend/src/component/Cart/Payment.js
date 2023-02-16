@@ -24,7 +24,8 @@ const Payment = ({ history }) => {
 
   return (
     <Fragment>
-      
+      <MetaData title="Payment" />
+      <CheckoutSteps activeStep={2} />
       <div className="paymentContainer">
         
       </div>
