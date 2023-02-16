@@ -28,6 +28,7 @@ import Payment from "./component/Cart/Payment";
 import { Elements } from "@stripe/react-stripe-js";
 import { loadStripe } from "@stripe/stripe-js";
 import OrderSuccess from "./component/Cart/OrderSuccess";
+import MyOrders from "./component/Order/MyOrders";
 
 
 
@@ -98,6 +99,8 @@ function App() {
       <ProtectedRoute exact path="/shipping" component={Shipping} />
 
       <ProtectedRoute exact path="/success" component={OrderSuccess} />
+
+      <ProtectedRoute exact path="/orders" component={MyOrders} />
 
       <ProtectedRoute exact path="/order/confirm" component={ConfirmOrder} />
 
