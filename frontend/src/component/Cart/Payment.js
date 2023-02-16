@@ -6,7 +6,7 @@ import MetaData from "../layout/MetaData";
 import { Typography } from "@material-ui/core";
 import { useAlert } from "react-alert";
 import {
-  CardNumberElement,
+  CardNumberElement,     // verifies whether card number is valid (16 digits)
   CardCvcElement,
   CardExpiryElement,
   useStripe,
@@ -21,7 +21,7 @@ import { createOrder, clearErrors } from "../../actions/orderAction";
 
 const Payment = ({ history }) => {
   
-  const orderInfo = JSON.parse(sessionStorage.getItem("orderInfo"));
+  const orderInfo = JSON.parse(sessionStorage.getItem("orderInfo"));     // getting order info from session storage
 
   const dispatch = useDispatch();
   const alert = useAlert();
@@ -58,7 +58,7 @@ const Payment = ({ history }) => {
         },
       };
       const { data } = await axios.post(
-        "/api/v1/payment/process",
+        "/api/v1/payment/process",     // url in backend
         paymentData,
         config
       );
@@ -99,7 +99,7 @@ const Payment = ({ history }) => {
 
           history.push("/success");
         } else {
-          alert.error("There's some issue while processing payment ");
+          alert.error("There was an issue while processing payment ");
         }
       }
     } catch (error) {
@@ -128,7 +128,8 @@ const Payment = ({ history }) => {
           
           <div>
             <CreditCardIcon />
-            <CardNumberElement className="paymentInput" />
+            {/* Use a card number provided by strip (test your integration)  */}
+            <CardNumberElement className="paymentInput" />   
           </div>
           
           <div>
@@ -143,7 +144,7 @@ const Payment = ({ history }) => {
 
           <input
             type="submit"
-            value={`Pay - ₹${orderInfo && orderInfo.totalPrice}`}
+            value={`Pay - $${orderInfo && orderInfo.totalPrice}`}
             ref={payBtn}
             className="paymentFormBtn"
           />
