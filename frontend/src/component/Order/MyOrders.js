@@ -17,8 +17,12 @@ const MyOrders = () => {
   return (
     <Fragment>
       
+      <MetaData title={`${user.name} - Orders`} />
 
-      
+      {loading ? (
+        <Loader />
+      ) : (
+
         <div className="myOrdersPage">
 
           <DataGrid
@@ -33,7 +37,9 @@ const MyOrders = () => {
           <Typography id="myOrdersHeading">{user.name}'s Orders</Typography>
 
         </div>
-      
+
+      )}
+
     </Fragment>
   );
 };
