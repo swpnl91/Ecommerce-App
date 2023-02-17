@@ -95,6 +95,23 @@ const OrderDetails = ({ match }) => {
 
             <div className="orderDetailsCartItems">
               
+              <Typography>Order Items:</Typography>
+              
+              <div className="orderDetailsCartItemsContainer">
+                {order.orderItems &&
+                  order.orderItems.map((item) => (
+                    <div key={item.product}>
+                      <img src={item.image} alt="Product" />
+                      <Link to={`/product/${item.product}`}>
+                        {item.name}
+                      </Link>{" "}
+                      <span>
+                        {item.quantity} X ₹{item.price} ={" "}
+                        <b>₹{item.price * item.quantity}</b>
+                      </span>
+                    </div>
+                  ))}
+              </div>
 
             </div>
 
