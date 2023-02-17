@@ -36,11 +36,12 @@ const ProductDetails = ({ match }) => {     /* match is received as a prop (defa
     (state) => state.newReview
   );
 
+  // for styling the <Rating /> component from material UI as there is a bug with 'react-rating-stars' package
   const options = {
     size: "large",
     value: product.ratings,
     readOnly: true,
-    precision: 0.5,
+    precision: 0.5,     // allows for half star reviews (3.5, 4.5 etc.)
   };
 
   const [quantity, setQuantity] = useState(1);
@@ -131,7 +132,7 @@ const ProductDetails = ({ match }) => {     /* match is received as a prop (defa
               </div>
 
               <div className="detailsBlock-2">
-                {/* <Rating {...options} /> */}
+                <Rating {...options} />
                 <span className="detailsBlock-2-span">
                   {" "}
                   ({product.numOfReviews} Reviews)
@@ -139,7 +140,7 @@ const ProductDetails = ({ match }) => {     /* match is received as a prop (defa
               </div>
 
               <div className="detailsBlock-3">
-                <h1>{`₹${product.price}`}</h1>
+                <h1>{`$${product.price}`}</h1>
                 <div className="detailsBlock-3-1">
                   <div className="detailsBlock-3-1-1">
                     <button onClick={decreaseQuantity}>-</button>
