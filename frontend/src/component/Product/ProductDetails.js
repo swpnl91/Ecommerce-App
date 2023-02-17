@@ -5,6 +5,7 @@ import { useSelector, useDispatch } from "react-redux";
 import {
   clearErrors,
   getProductDetails,
+  newReview,
 } from "../../actions/productAction";
 import ReviewCard from "./ReviewCard.js";
 import Loader from "../layout/Loader/Loader";
@@ -19,6 +20,7 @@ import {
   Button,
 } from "@material-ui/core";
 import { Rating } from "@material-ui/lab";
+import { NEW_REVIEW_RESET } from "../../constants/productConstants";
 
 
 const ProductDetails = ({ match }) => {     /* match is received as a prop (default prop) Google 'match' object/parameter in react*/
@@ -30,6 +32,9 @@ const ProductDetails = ({ match }) => {     /* match is received as a prop (defa
     (state) => state.productDetails
   );
 
+  const { success, error: reviewError } = useSelector(
+    (state) => state.newReview
+  );
 
   const options = {
     size: "large",
@@ -67,14 +72,36 @@ const ProductDetails = ({ match }) => {     /* match is received as a prop (defa
     open ? setOpen(false) : setOpen(true);
   };
 
+  const reviewSubmitHandler = () => {
+    const myForm = new FormData();
+
+    myForm.set("rating", rating);
+    myForm.set("comment", comment);
+    myForm.set("productId", match.params.id);
+
+    dispatch(newReview(myForm));
+
+    setOpen(false);    // to close the dialog after submitting the review
+  };
+
   useEffect(() => {
     if (error) {
       alert.error(error);
       dispatch(clearErrors());
     }
 
+    if (reviewError) {
+      alert.error(reviewError);
+      dispatch(clearErrors());
+    }
+
+    if (success) {
+      alert.success("Review Submitted Successfully");
+      dispatch({ type: NEW_REVIEW_RESET });
+    }
+
     dispatch(getProductDetails(match.params.id));       /* we have 'req.param.id in backend in front end we have 'match.params.id' and it's received as a prop */
-  }, [dispatch, match.params.id, error, alert,]);
+  }, [dispatch, match.params.id, error, alert, reviewError, success]);
 
 
   return (
