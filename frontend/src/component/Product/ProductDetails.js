@@ -18,6 +18,7 @@ import {
   DialogTitle,
   Button,
 } from "@material-ui/core";
+import { Rating } from "@material-ui/lab";
 
 
 const ProductDetails = ({ match }) => {     /* match is received as a prop (default prop) Google 'match' object/parameter in react*/
@@ -38,6 +39,9 @@ const ProductDetails = ({ match }) => {     /* match is received as a prop (defa
   };
 
   const [quantity, setQuantity] = useState(1);
+  const [open, setOpen] = useState(false);
+  const [rating, setRating] = useState(0);
+  const [comment, setComment] = useState("");
 
 
   const increaseQuantity = () => {
@@ -57,6 +61,10 @@ const ProductDetails = ({ match }) => {     /* match is received as a prop (defa
   const addToCartHandler = () => {
     dispatch(addItemsToCart(match.params.id, quantity));
     alert.success("Item Added To Cart");
+  };
+
+  const submitReviewToggle = () => {
+    open ? setOpen(false) : setOpen(true);
   };
 
   useEffect(() => {
