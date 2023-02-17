@@ -17,6 +17,17 @@ const Sidebar = () => {
   return (
     <div className="sidebar">
       
+      <Link to="/">
+        <img src={logo} alt="Ecommerce" />
+      </Link>
+
+      <Link to="/admin/dashboard">
+        <p>
+          <DashboardIcon /> Dashboard
+        </p>
+      </Link>
+      
+
     </div>
   );
 };
