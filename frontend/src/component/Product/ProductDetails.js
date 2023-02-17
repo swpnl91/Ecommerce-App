@@ -11,6 +11,13 @@ import Loader from "../layout/Loader/Loader";
 import { useAlert } from "react-alert";
 import MetaData from "../layout/MetaData";
 import { addItemsToCart } from "../../actions/cartAction";
+import {
+  Dialog,
+  DialogActions,
+  DialogContent,
+  DialogTitle,
+  Button,
+} from "@material-ui/core";
 
 
 const ProductDetails = ({ match }) => {     /* match is received as a prop (default prop) Google 'match' object/parameter in react*/
