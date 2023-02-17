@@ -20,21 +20,21 @@ const MyOrders = () => {
   const { loading, error, orders } = useSelector((state) => state.myOrders);
   const { user } = useSelector((state) => state.user);
 
-  const columns = [
-    { field: "id", headerName: "Order ID", minWidth: 300, flex: 1 },
+  const columns = [       
+    { field: "id", headerName: "Order ID", minWidth: 300, flex: 1 },      // 1st column
 
-    {
+    {                                  // 2nd column
       field: "status",
       headerName: "Status",
       minWidth: 150,
       flex: 0.5,
-      cellClassName: (params) => {
-        return params.getValue(params.id, "status") === "Delivered"
+      cellClassName: (params) => {        // in-built property that allows to set cellClassName to a color viz. greenColor/redColor 
+        return params.getValue(params.id, "status") === "Delivered"     // This checks whether the status is 'Processing' or 'Delivered' and then applies the color accordingly
           ? "greenColor"
           : "redColor";
       },
     },
-    {
+    {                            // 3rd column
       field: "itemsQty",
       headerName: "Items Qty",
       type: "number",
@@ -42,7 +42,7 @@ const MyOrders = () => {
       flex: 0.3,
     },
 
-    {
+    {                         // 4th column
       field: "amount",
       headerName: "Amount",
       type: "number",
@@ -50,16 +50,17 @@ const MyOrders = () => {
       flex: 0.5,
     },
 
-    {
+    {                           // 5th column
       field: "actions",
       flex: 0.3,
       headerName: "Actions",
       minWidth: 150,
       type: "number",
-      sortable: false,
-      renderCell: (params) => {
-        return (
-          <Link to={`/order/${params.getValue(params.id, "id")}`}>
+      sortable: false,      // other fields are sortable
+      renderCell: (params) => {    // 'params' allows us to access any other field from the column (in the same row) by using the '.getValue' method
+        return (       // this is basically for providing a link to each individual order 
+          // We're sending the user to '/orders/:orderId' essentially
+          <Link to={`/order/${params.getValue(params.id, "id")}`}>       
             <LaunchIcon />
           </Link>
         );
@@ -71,7 +72,7 @@ const MyOrders = () => {
   orders &&
     orders.forEach((item, index) => {
       rows.push({
-        itemsQty: item.orderItems.length,
+        itemsQty: item.orderItems.length,       // these are the "field"s from the objects in column array
         id: item._id,
         status: item.orderStatus,
         amount: item.totalPrice,
@@ -98,13 +99,14 @@ const MyOrders = () => {
 
         <div className="myOrdersPage">
 
-          <DataGrid
-            rows={rows}
+          {/* DataGrid basically helps in creating a table */}
+          <DataGrid      
+            rows={rows}    
             columns={columns}
-            pageSize={10}
+            pageSize={10}      // max 10 orders on each page
             disableSelectionOnClick
             className="myOrdersTable"
-            autoHeight
+            autoHeight    // the table automatically adjusts the height after 10 rows
           />
 
           <Typography id="myOrdersHeading">{user.name}'s Orders</Typography>
