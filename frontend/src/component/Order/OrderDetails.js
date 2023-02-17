@@ -21,7 +21,7 @@ const OrderDetails = ({ match }) => {
       dispatch(clearErrors());
     }
 
-    dispatch(getOrderDetails(match.params.id));
+    dispatch(getOrderDetails(match.params.id));    // 'match.params.id' taken from the url
   }, [dispatch, alert, error, match.params.id]);
   
   
@@ -49,7 +49,7 @@ const OrderDetails = ({ match }) => {
               <div className="orderDetailsContainerBox">
                 <div>
                   <p>Name:</p>
-                  <span>{order.user && order.user.name}</span>
+                  <span>{order.user && order.user.name}</span>  
                 </div>
                 <div>
                   <p>Phone:</p>
@@ -122,8 +122,8 @@ const OrderDetails = ({ match }) => {
                         {item.name}
                       </Link>{" "}
                       <span>
-                        {item.quantity} X ₹{item.price} ={" "}
-                        <b>₹{item.price * item.quantity}</b>
+                        {item.quantity} X ${item.price} ={" "}
+                        <b>${item.price * item.quantity}</b>
                       </span>
                     </div>
                   ))}
