@@ -28,10 +28,13 @@ const OrderDetails = ({ match }) => {
   return (
     <Fragment>
       
+      {loading ? (
+        <Loader />
+      ) : (
 
         <Fragment>
 
-          
+          <MetaData title="Order Details" />
 
           <div className="orderDetailsPage">
             
@@ -131,7 +134,9 @@ const OrderDetails = ({ match }) => {
           </div>
 
         </Fragment>
-     
+
+      )}
+    
     </Fragment>
   );
 };
