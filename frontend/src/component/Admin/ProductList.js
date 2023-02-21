@@ -121,6 +121,7 @@ const ProductList = ({ history }) => {
   return (
     <Fragment>
       
+      <MetaData title={`ALL PRODUCTS - Admin`} />
 
       <div className="dashboard">
         
