@@ -20,10 +20,12 @@ const NewProduct = ({ history }) => {
   return (
     <Fragment>
       
+      <MetaData title="Create Product" />
+
       <div className="dashboard">
 
         <SideBar />
-        
+
         <div className="newProductContainer">
           
           <form
