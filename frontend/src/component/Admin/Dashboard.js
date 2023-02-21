@@ -3,7 +3,7 @@ import "./Dashboard.css";
 import Sidebar from "./Sidebar.js";
 import { Typography } from "@material-ui/core";
 import { Link } from "react-router-dom";
-import { Doughnut, Line } from "react-chartjs-2";
+import { Doughnut, Line } from "react-chartjs-2";      // getting 'doughnut chart' and 'line chart' for information display
 import { useSelector, useDispatch } from "react-redux";
 import { getAdminProduct } from "../../actions/productAction";
 import { getAllOrders } from "../../actions/orderAction.js";
@@ -80,7 +80,7 @@ const Dashboard = () => {
           
           <div>
             <p>
-              Total Amount <br /> ₹{totalAmount}
+              Total Amount <br /> ${totalAmount}
             </p>
           </div>
           
@@ -88,11 +88,12 @@ const Dashboard = () => {
             
             <Link to="/admin/products">
               <p>Product</p>
+              {/* Basically and product and its count */}
               <p>{products && products.length}</p>
             </Link>
             <Link to="/admin/orders">
               <p>Orders</p>
-              <p>{orders && orders.length}</p>
+              <p>{orders && orders.length}</p>   
             </Link>
             <Link to="/admin/users">
               <p>Users</p>

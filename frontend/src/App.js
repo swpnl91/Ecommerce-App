@@ -31,6 +31,7 @@ import OrderSuccess from "./component/Cart/OrderSuccess";
 import MyOrders from "./component/Order/MyOrders";
 import OrderDetails from "./component/Order/OrderDetails";
 import Dashboard from "./component/Admin/Dashboard.js";
+import ProductList from "./component/Admin/ProductList.js";
 
 
 
@@ -111,10 +112,17 @@ function App() {
         <ProtectedRoute exact path="/order/:id" component={OrderDetails} />
 
         <ProtectedRoute
-          isAdmin={true}
+          isAdmin={true}    // so that only admins can access this route
           exact
           path="/admin/dashboard"
           component={Dashboard}
+        />
+
+        <ProtectedRoute
+          exact
+          path="/admin/products"
+          isAdmin={true}
+          component={ProductList}
         />
 
       </Switch>
