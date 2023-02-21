@@ -32,6 +32,7 @@ import MyOrders from "./component/Order/MyOrders";
 import OrderDetails from "./component/Order/OrderDetails";
 import Dashboard from "./component/Admin/Dashboard.js";
 import ProductList from "./component/Admin/ProductList.js";
+import NewProduct from "./component/Admin/NewProduct";
 
 
 
@@ -123,6 +124,13 @@ function App() {
           path="/admin/products"
           isAdmin={true}
           component={ProductList}
+        />
+
+        <ProtectedRoute
+          exact
+          path="/admin/product"
+          isAdmin={true}
+          component={NewProduct}
         />
 
       </Switch>
