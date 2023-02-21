@@ -21,6 +21,26 @@ const Dashboard = () => {
   const { users } = useSelector((state) => state.allUsers);
 
   let outOfStock = 0;
+
+  products &&
+    products.forEach((item) => {
+      if (item.Stock === 0) {
+        outOfStock += 1;
+      }
+    });
+
+  useEffect(() => {
+    dispatch(getAdminProduct());
+    dispatch(getAllOrders());
+    dispatch(getAllUsers());
+  }, [dispatch]);
+
+  let totalAmount = 0;
+  
+  orders &&
+    orders.forEach((item) => {
+      totalAmount += item.totalPrice;
+    });
   
 
   return (
