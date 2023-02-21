@@ -35,7 +35,8 @@
 .sidebar a > p > svg {
   margin-right: 0.5rem;
 }
-
+ 
+/* default class for TreeView */
 .MuiTypography-root {
   background-color: #fff !important;
 }

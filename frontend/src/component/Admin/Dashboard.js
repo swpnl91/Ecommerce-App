@@ -17,9 +17,44 @@ const Dashboard = () => {
   return (
     <div className="dashboard">
       
+      
 
       <div className="dashboardContainer">
         
+        <div className="dashboardSummary">
+          
+          <div>
+            <p>
+              Total Amount <br /> ₹{totalAmount}
+            </p>
+          </div>
+          
+          <div className="dashboardSummaryBox2">
+            
+            <Link to="/admin/products">
+              <p>Product</p>
+              <p>{products && products.length}</p>
+            </Link>
+            <Link to="/admin/orders">
+              <p>Orders</p>
+              <p>{orders && orders.length}</p>
+            </Link>
+            <Link to="/admin/users">
+              <p>Users</p>
+              <p>{users && users.length}</p>
+            </Link>
+          </div>
+
+        </div>
+
+        <div className="lineChart">
+          <Line data={lineState} />
+        </div>
+
+        <div className="doughnutChart">
+          <Doughnut data={doughnutState} />
+        </div>
+
       </div>
 
     </div>
