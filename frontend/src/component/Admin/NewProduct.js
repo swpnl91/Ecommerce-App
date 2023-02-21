@@ -70,7 +70,9 @@ const NewProduct = ({ history }) => {
   };
 
   const createProductImagesChange = (e) => {
-    const files = Array.from(e.target.files);
+
+    // the images selected through <input> of 'type = file' can be accessed with 'e.target.files'
+    const files = Array.from(e.target.files);      // Array.from creates a copy of an array
 
     setImages([]);
     setImagesPreview([]);
@@ -172,7 +174,8 @@ const NewProduct = ({ history }) => {
                 multiple
               />
             </div>
-
+            
+            {/* this div is basically for displaying the selected images (from admin's computer)  */}
             <div id="createProductFormImage">
               {imagesPreview.map((image, index) => (
                 <img key={index} src={image} alt="Product Preview" />
