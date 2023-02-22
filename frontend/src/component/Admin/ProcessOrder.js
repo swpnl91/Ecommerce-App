@@ -58,7 +58,7 @@ const ProcessOrder = ({ history, match }) => {
   return (
     <Fragment>
       
-
+      <MetaData title="Process Order" />
 
       <div className="dashboard">
         
