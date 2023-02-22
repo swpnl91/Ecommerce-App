@@ -47,7 +47,7 @@ const ProductList = ({ history }) => {
     if (isDeleted) {
       alert.success("Product Deleted Successfully");
       history.push("/admin/dashboard");
-      dispatch({ type: DELETE_PRODUCT_RESET });
+      dispatch({ type: DELETE_PRODUCT_RESET });   // so that 'isDeleted' gets changed otherwise it'll be called continuously
     }
 
     dispatch(getAdminProduct());
