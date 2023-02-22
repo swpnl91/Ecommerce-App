@@ -35,6 +35,7 @@ import ProductList from "./component/Admin/ProductList.js";
 import NewProduct from "./component/Admin/NewProduct";
 import UpdateProduct from "./component/Admin/UpdateProduct";
 import OrderList from "./component/Admin/OrderList";
+import ProcessOrder from "./component/Admin/ProcessOrder";
 
 
 
@@ -148,6 +149,13 @@ function App() {
           path="/admin/orders"
           isAdmin={true}
           component={OrderList}
+        />
+
+        <ProtectedRoute
+          exact
+          path="/admin/order/:id"
+          isAdmin={true}
+          component={ProcessOrder}
         />
 
       </Switch>
