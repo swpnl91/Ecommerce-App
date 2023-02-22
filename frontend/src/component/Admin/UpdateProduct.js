@@ -19,6 +19,112 @@ import { UPDATE_PRODUCT_RESET } from "../../constants/productConstants";
 
 const UpdateProduct = ({ history, match }) => {
   
+  const dispatch = useDispatch();
+  const alert = useAlert();
+
+  const { error, product } = useSelector((state) => state.productDetails);
+
+  const {
+    loading,
+    error: updateError,
+    isUpdated,
+  } = useSelector((state) => state.product);
+
+  const [name, setName] = useState("");
+  const [price, setPrice] = useState(0);
+  const [description, setDescription] = useState("");
+  const [category, setCategory] = useState("");
+  const [Stock, setStock] = useState(0);
+  const [images, setImages] = useState([]);
+  const [oldImages, setOldImages] = useState([]);
+  const [imagesPreview, setImagesPreview] = useState([]);
+
+  const categories = [
+    "Laptop",
+    "Footwear",
+    "Bottom",
+    "Tops",
+    "Attire",
+    "Camera",
+    "SmartPhones",
+  ];
+
+  const productId = match.params.id;
+
+  useEffect(() => {
+    if (product && product._id !== productId) {
+      dispatch(getProductDetails(productId));
+    } else {
+      setName(product.name);
+      setDescription(product.description);
+      setPrice(product.price);
+      setCategory(product.category);
+      setStock(product.Stock);
+      setOldImages(product.images);
+    }
+    if (error) {
+      alert.error(error);
+      dispatch(clearErrors());
+    }
+
+    if (updateError) {
+      alert.error(updateError);
+      dispatch(clearErrors());
+    }
+
+    if (isUpdated) {
+      alert.success("Product Updated Successfully");
+      history.push("/admin/products");
+      dispatch({ type: UPDATE_PRODUCT_RESET });
+    }
+  }, [
+    dispatch,
+    alert,
+    error,
+    history,
+    isUpdated,
+    productId,
+    product,
+    updateError,
+  ]);
+
+  const updateProductSubmitHandler = (e) => {
+    e.preventDefault();
+
+    const myForm = new FormData();
+
+    myForm.set("name", name);
+    myForm.set("price", price);
+    myForm.set("description", description);
+    myForm.set("category", category);
+    myForm.set("Stock", Stock);
+
+    images.forEach((image) => {
+      myForm.append("images", image);
+    });
+    dispatch(updateProduct(productId, myForm));
+  };
+
+  const updateProductImagesChange = (e) => {
+    const files = Array.from(e.target.files);
+
+    setImages([]);
+    setImagesPreview([]);
+    setOldImages([]);
+
+    files.forEach((file) => {
+      const reader = new FileReader();
+
+      reader.onload = () => {
+        if (reader.readyState === 2) {
+          setImagesPreview((old) => [...old, reader.result]);
+          setImages((old) => [...old, reader.result]);
+        }
+      };
+
+      reader.readAsDataURL(file);
+    });
+  };
 
   return (
     <Fragment>
