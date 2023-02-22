@@ -23,7 +23,7 @@ const UpdateProduct = ({ history, match }) => {
   return (
     <Fragment>
       
-      
+      <MetaData title="Create Product" />
       
       <div className="dashboard">
         
@@ -47,7 +47,7 @@ const UpdateProduct = ({ history, match }) => {
                 onChange={(e) => setName(e.target.value)}
               />
             </div>
-            
+
             <div>
               <AttachMoneyIcon />
               <input
