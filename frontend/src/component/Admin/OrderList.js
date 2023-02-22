@@ -24,6 +24,7 @@ const OrderList = ({ history }) => {
   return (
     <Fragment>
       
+      <MetaData title={`ALL ORDERS - Admin`} />
 
       <div className="dashboard">
         
