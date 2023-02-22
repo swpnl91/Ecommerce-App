@@ -27,6 +27,22 @@ const OrderList = ({ history }) => {
 
       <div className="dashboard">
         
+        <SideBar />
+        
+        <div className="productListContainer">
+          <h1 id="productListHeading">ALL ORDERS</h1>
+
+          <DataGrid
+            rows={rows}
+            columns={columns}
+            pageSize={10}
+            disableSelectionOnClick
+            className="productListTable"
+            autoHeight
+          />
+
+        </div>
+
       </div>
 
     </Fragment>
