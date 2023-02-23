@@ -120,11 +120,12 @@ const UsersList = ({ history }) => {
         name: item.name,
       });
     });
-    
+
 
   return (
     <Fragment>
       
+      <MetaData title={`ALL USERS - Admin`} />
 
       <div className="dashboard">
         
