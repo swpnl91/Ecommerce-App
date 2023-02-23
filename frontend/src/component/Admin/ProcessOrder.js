@@ -144,7 +144,7 @@ const ProcessOrder = ({ history, match }) => {
                 </div>
 
                 <div className="confirmCartItems">
-                  <Typography>Your Cart Items:</Typography>
+                  <Typography>Cart Items:</Typography>
                   
                   <div className="confirmCartItemsContainer">
                     {order.orderItems &&
@@ -155,8 +155,8 @@ const ProcessOrder = ({ history, match }) => {
                             {item.name}
                           </Link>{" "}
                           <span>
-                            {item.quantity} X ₹{item.price} ={" "}
-                            <b>₹{item.price * item.quantity}</b>
+                            {item.quantity} X ${item.price} ={" "}
+                            <b>${item.price * item.quantity}</b>
                           </span>
                         </div>
                       ))}
@@ -170,7 +170,7 @@ const ProcessOrder = ({ history, match }) => {
               <div
                 style={{
                   display: order.orderStatus === "Delivered" ? "none" : "block",
-                }}
+                }}  // basically what this condition does is - if the product is delivered then it doesn't show the option to choose its status (delivered/shipped)
               >
                 <form
                   className="updateOrderForm"
