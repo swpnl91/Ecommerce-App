@@ -18,6 +18,22 @@ import Loader from "../layout/Loader/Loader";
 
 const UpdateUser = ({ history, match }) => {
   
+  const dispatch = useDispatch();
+  const alert = useAlert();
+
+  const { loading, error, user } = useSelector((state) => state.userDetails);
+
+  const {
+    loading: updateLoading,
+    error: updateError,
+    isUpdated,
+  } = useSelector((state) => state.profile);
+
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+  const [role, setRole] = useState("");
+
+  const userId = match.params.id;
 
   return (
     <Fragment>
@@ -47,7 +63,7 @@ const UpdateUser = ({ history, match }) => {
                   onChange={(e) => setName(e.target.value)}
                 />
               </div>
-              
+
               <div>
                 <MailOutlineIcon />
                 <input
