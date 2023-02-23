@@ -35,6 +35,31 @@ const UpdateUser = ({ history, match }) => {
 
   const userId = match.params.id;
 
+  useEffect(() => {
+    if (user && user._id !== userId) {
+      dispatch(getUserDetails(userId));
+    } else {
+      setName(user.name);
+      setEmail(user.email);
+      setRole(user.role);
+    }
+    if (error) {
+      alert.error(error);
+      dispatch(clearErrors());
+    }
+
+    if (updateError) {
+      alert.error(updateError);
+      dispatch(clearErrors());
+    }
+
+    if (isUpdated) {
+      alert.success("User Updated Successfully");
+      history.push("/admin/users");
+      dispatch({ type: UPDATE_USER_RESET });
+    }
+  }, [dispatch, alert, error, history, isUpdated, updateError, user, userId]);
+
   return (
     <Fragment>
       
