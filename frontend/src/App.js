@@ -37,6 +37,7 @@ import UpdateProduct from "./component/Admin/UpdateProduct";
 import OrderList from "./component/Admin/OrderList";
 import ProcessOrder from "./component/Admin/ProcessOrder";
 import UsersList from "./component/Admin/UsersList";
+import UpdateUser from "./component/Admin/UpdateUser";
 
 
 
@@ -164,6 +165,13 @@ function App() {
           path="/admin/users"
           isAdmin={true}
           component={UsersList}
+        />
+
+        <ProtectedRoute
+          exact
+          path="/admin/user/:id"
+          isAdmin={true}
+          component={UpdateUser}
         />
 
       </Switch>
