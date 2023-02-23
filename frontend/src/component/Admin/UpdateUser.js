@@ -71,12 +71,12 @@ const UpdateUser = ({ history, match }) => {
 
     dispatch(updateUser(userId, myForm));
   };
-  
+
 
   return (
     <Fragment>
       
-      
+      <MetaData title="Update User" />
       
       <div className="dashboard">
         
