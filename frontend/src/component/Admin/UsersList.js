@@ -17,6 +17,39 @@ import { DELETE_USER_RESET } from "../../constants/userConstants";
 
 const UsersList = ({ history }) => {
   
+  const dispatch = useDispatch();
+
+  const alert = useAlert();
+
+  const { error, users } = useSelector((state) => state.allUsers);
+
+  const {
+    error: deleteError,
+    isDeleted,
+    message,
+  } = useSelector((state) => state.profile);
+
+  
+
+  useEffect(() => {
+    if (error) {
+      alert.error(error);
+      dispatch(clearErrors());
+    }
+
+    if (deleteError) {
+      alert.error(deleteError);
+      dispatch(clearErrors());
+    }
+
+    if (isDeleted) {
+      alert.success(message);
+      history.push("/admin/users");
+      dispatch({ type: DELETE_USER_RESET });
+    }
+
+    dispatch(getAllUsers());
+  }, [dispatch, alert, error, deleteError, history, isDeleted, message]);
 
   return (
     <Fragment>
