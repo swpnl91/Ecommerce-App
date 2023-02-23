@@ -29,7 +29,9 @@ const UsersList = ({ history }) => {
     message,
   } = useSelector((state) => state.profile);
 
-  
+  const deleteUserHandler = (id) => {
+    dispatch(deleteUser(id));
+  };
 
   useEffect(() => {
     if (error) {
