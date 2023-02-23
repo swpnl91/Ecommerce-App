@@ -60,6 +60,19 @@ const UpdateUser = ({ history, match }) => {
     }
   }, [dispatch, alert, error, history, isUpdated, updateError, user, userId]);
 
+  const updateUserSubmitHandler = (e) => {
+    e.preventDefault();
+
+    const myForm = new FormData();
+
+    myForm.set("name", name);
+    myForm.set("email", email);
+    myForm.set("role", role);
+
+    dispatch(updateUser(userId, myForm));
+  };
+  
+
   return (
     <Fragment>
       
