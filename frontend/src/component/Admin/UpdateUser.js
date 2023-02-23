@@ -80,10 +80,12 @@ const UpdateUser = ({ history, match }) => {
       
       <div className="dashboard">
         
-      <SideBar />
+        <SideBar />
         <div className="newProductContainer">
           
-
+          {loading ? (
+            <Loader />
+          ) : (
 
             <form
               className="createProductForm"
@@ -133,6 +135,7 @@ const UpdateUser = ({ history, match }) => {
               </Button>
             </form>
           
+          )}
 
         </div>
 
