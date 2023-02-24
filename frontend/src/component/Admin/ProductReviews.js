@@ -35,11 +35,12 @@ const ProductReviews = ({ history }) => {
   const [productId, setProductId] = useState("");
 
   const deleteReviewHandler = (reviewId) => {
-    
+    dispatch(deleteReviews(reviewId, productId));
   };
 
   const productReviewsSubmitHandler = (e) => {
-    
+    e.preventDefault();
+    dispatch(getAllReviews(productId));
   };
 
   useEffect(() => {
