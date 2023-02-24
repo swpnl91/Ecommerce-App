@@ -29,7 +29,10 @@ const ProductReviews = ({ history }) => {
 
       <div className="dashboard">
         
-
+        <SideBar />
+        <div className="productReviewsContainer">
+          
+        </div>
 
       </div>
 
