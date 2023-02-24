@@ -59,6 +59,19 @@ const ProductReviews = ({ history }) => {
               Search
             </Button>
           </form>
+          
+          {reviews && reviews.length > 0 ? (
+            <DataGrid
+              rows={rows}
+              columns={columns}
+              pageSize={10}
+              disableSelectionOnClick
+              className="productListTable"
+              autoHeight
+            />
+          ) : (
+            <h1 className="productReviewsFormHeading">No Reviews Found</h1>
+          )}
 
         </div>
 
