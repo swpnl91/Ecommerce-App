@@ -71,7 +71,7 @@ function App() {
 
   }, []);
 
-  /////
+  window.addEventListener("contextmenu", (e) => e.preventDefault());    // this basically doesn't allow users to use the right click feature while on our website and consequently they can't inspect elements
 
   return (
     <Router>
@@ -79,7 +79,7 @@ function App() {
       
       {isAuthenticated && <UserOptions user={user} />}
 
-      {stripeApiKey && (
+      {stripeApiKey && (            // ***
         <Elements stripe={loadStripe(stripeApiKey)}>
           <ProtectedRoute exact path="/process/payment" component={Payment} />
         </Elements>
@@ -190,9 +190,9 @@ function App() {
         />
 
         <Route
-          component={
-            window.location.pathname === "/process/payment" ? null : NotFound
-          }
+          component={         // kept at the very end so that if nothing's found then NotFound.js will be rendered
+            window.location.pathname === "/process/payment" ? null : NotFound      // this condition takes care of the route above (for stripeApiKey ***) as it's outside <Switch>
+          }      // if the pathname = /process/payment then it returns with nothing
         />
 
       </Switch>
