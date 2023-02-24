@@ -252,7 +252,7 @@ exports.deleteReview = catchAsyncErrors(async (req, res, next) => {
 
   let ratings = 0;
 
-  if (reviews.length === 0) {
+  if (reviews.length === 0) {     // Need to add this condition so that in a case where there are no reviews it doesn't calculate 0/0 (which isn't possible in Maths)
     ratings = 0;
   } else {
     ratings = avg / reviews.length;
