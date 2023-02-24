@@ -4,7 +4,7 @@ import "./ProductReviews.css";
 
 const ProductReviews = ({ history }) => {
   
-    
+  
 
   return (
     <Fragment>
@@ -13,7 +13,7 @@ const ProductReviews = ({ history }) => {
 
       <div className="dashboard">
         
-        
+
 
       </div>
 
