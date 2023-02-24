@@ -33,6 +33,35 @@ const ProductReviews = ({ history }) => {
   );
 
   const [productId, setProductId] = useState("");
+
+  const deleteReviewHandler = (reviewId) => {
+    
+  };
+
+  const productReviewsSubmitHandler = (e) => {
+    
+  };
+
+  useEffect(() => {
+    if (productId.length === 24) {
+      dispatch(getAllReviews(productId));
+    }
+    if (error) {
+      alert.error(error);
+      dispatch(clearErrors());
+    }
+
+    if (deleteError) {
+      alert.error(deleteError);
+      dispatch(clearErrors());
+    }
+
+    if (isDeleted) {
+      alert.success("Review Deleted Successfully");
+      history.push("/admin/reviews");
+      dispatch({ type: DELETE_REVIEW_RESET });
+    }
+  }, [dispatch, alert, error, deleteError, history, isDeleted, productId]);
   
 
   return (
