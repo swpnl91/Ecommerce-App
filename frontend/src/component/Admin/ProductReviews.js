@@ -32,6 +32,34 @@ const ProductReviews = ({ history }) => {
         <SideBar />
         <div className="productReviewsContainer">
           
+          <form
+            className="productReviewsForm"
+            onSubmit={productReviewsSubmitHandler}
+          >
+            <h1 className="productReviewsFormHeading">ALL REVIEWS</h1>
+
+            <div>
+              <Star />
+              <input
+                type="text"
+                placeholder="Product Id"
+                required
+                value={productId}
+                onChange={(e) => setProductId(e.target.value)}
+              />
+            </div>
+
+            <Button
+              id="createProductBtn"
+              type="submit"
+              disabled={
+                loading ? true : false || productId === "" ? true : false
+              }
+            >
+              Search
+            </Button>
+          </form>
+
         </div>
 
       </div>
